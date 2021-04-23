@@ -1,6 +1,6 @@
 package atcs.museum.domain;
 
-import java.util.HashMap;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -11,8 +11,8 @@ public class Visit {
 	@Id
 	private Long id;
 	
-	
-	//@OneToMany
-	//private HashMap<Long, PointOfInterest> visitPositions;
-
+	@OneToMany(mappedBy="visit")
+	private List<PointOfInterest> visitPois;
+	@OneToMany(mappedBy="visit")
+	private List<Presentation> visitPresentations;
 }
