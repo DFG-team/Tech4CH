@@ -15,4 +15,7 @@ public class Visit {
 	private List<PointOfInterest> visitPois;
 	@OneToMany(mappedBy="visit")
 	private List<Presentation> visitPresentations;
+	
+	 @OneToOne
+	 private Visitor visitor;
 }
