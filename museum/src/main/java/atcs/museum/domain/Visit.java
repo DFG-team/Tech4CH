@@ -12,21 +12,51 @@ public class Visit {
 	private Long id;
 	
 	@OneToMany(mappedBy="visit")
-	private List<PointOfInterest> visitPois;
+	private List<PointOfInterestVisitor> visitPois;
 	@OneToMany(mappedBy="visit")
-	private List<Presentation> visitPresentations;
+	private List<PresentationVisitor> visitPresentations;
 	
 	 @OneToOne
 	 private Visitor visitor;
 	 
 	 
-	 public void addPresentation(Presentation p) {
+	 public Visit(List<PointOfInterestVisitor> vP, List<PresentationVisitor> vPr) {
+		 this.visitPois = vP;
+		 this.visitPresentations = vPr;
+	 }
+	 
+	 
+	 public void addPresentation(PresentationVisitor p) {
 		 this.visitPresentations.add(p);
 	 }
 	 
-	 public void addPOI(PointOfInterest poi) {
+	 public void addPOI(PointOfInterestVisitor poi) {
 		 this.visitPois.add(poi);
 	 }
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public List<PointOfInterestVisitor> getVisitPois() {
+		return visitPois;
+	}
+	public void setVisitPois(List<PointOfInterestVisitor> visitPois) {
+		this.visitPois = visitPois;
+	}
+	public List<PresentationVisitor> getVisitPresentations() {
+		return visitPresentations;
+	}
+	public void setVisitPresentations(List<PresentationVisitor> visitPresentations) {
+		this.visitPresentations = visitPresentations;
+	}
+	public Visitor getVisitor() {
+		return visitor;
+	}
+	public void setVisitor(Visitor visitor) {
+		this.visitor = visitor;
+	}
 }
 
 

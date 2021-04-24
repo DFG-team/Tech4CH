@@ -16,12 +16,12 @@ public class VisitorService {
 	private VisitorRepository visitorRepository;
 	
 	@Transactional
-	public Visitor getByName(String Name) {
-		return (Visitor)this.visitorRepository.findByName(Name);
+	public Visitor getByName(String name) {
+		return (Visitor)this.visitorRepository.findByName(name);
 	}
 	
 	@Transactional
-	public Visitor getById(long id) {
+	public Visitor getById(Long id) {
 		return this.visitorRepository.findById(id).get();
 		
 	}

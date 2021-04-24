@@ -14,5 +14,9 @@ public class Room {
 	private String name;
 	@OneToMany(mappedBy="room")
 	private List<PointOfInterest> pois;
-
+	
+	public Room(String name, List<PointOfInterest> p) {
+		this.name = name;
+		this.pois = p;
+	}
 }

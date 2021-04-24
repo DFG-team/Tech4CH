@@ -1,6 +1,7 @@
 package atcs.museum.domain;
 import javax.persistence.*;
 import java.time.*;
+import java.util.List;
 
 @Entity
 public class Presentation {
@@ -8,18 +9,32 @@ public class Presentation {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	private Long id;
+	@Column(name = "description")
+	private String description;
 	
-	//time when user start presentation
-	@Column(name = "time_on")
-	private LocalTime timeOn;
-	//time when user stop presentation
-	@Column(name = "time_off")
-	private LocalTime timeOff;
-	//end of presentation:System or User
-	@Column(name = "finish")
-	private String end;
+	@OneToMany(mappedBy = "presentation")
+	private List<PresentationVisitor> presentationVisitor;
 	
-	@ManyToOne
-	private Visit visit;
+	public Presentation(String description, List<PresentationVisitor> pV) {
+		this.description = description;
+		this.presentationVisitor = pV;
+	}
+	
+	
+	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 
 }

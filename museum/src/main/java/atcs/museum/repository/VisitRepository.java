@@ -8,5 +8,5 @@ import atcs.museum.domain.Visit;
 import atcs.museum.domain.Visitor;
 
 public interface VisitRepository extends CrudRepository<Visit,Long> {
-	public List<Visitor> findByVisitor(String name);
+	public Visit findByVisitor(Visitor visitor);
 }
