@@ -13,5 +13,8 @@ public class VisitorController {
 	public String home() {
 	return "index";
 	}
+	
+	
+	
 
 }
