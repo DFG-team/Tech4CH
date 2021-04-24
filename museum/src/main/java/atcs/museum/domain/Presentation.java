@@ -8,8 +8,7 @@ public class Presentation {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	private Long id;
-	//Presentation name
-	private String name;
+	
 	//time when user start presentation
 	@Column(name = "time_on")
 	private LocalTime timeOn;

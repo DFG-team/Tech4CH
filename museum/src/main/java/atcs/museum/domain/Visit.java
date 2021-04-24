@@ -18,4 +18,15 @@ public class Visit {
 	
 	 @OneToOne
 	 private Visitor visitor;
+	 
+	 
+	 public void addPresentation(Presentation p) {
+		 this.visitPresentations.add(p);
+	 }
+	 
+	 public void addPOI(PointOfInterest poi) {
+		 this.visitPois.add(poi);
+	 }
 }
+
+
