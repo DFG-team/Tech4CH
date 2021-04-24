@@ -16,7 +16,7 @@ public class Presentation {
 	@Column(name = "time_off")
 	private LocalTime timeOff;
 	//end of presentation:System or User
-	@Column(name = "end")
+	@Column(name = "finish")
 	private String end;
 	
 	@ManyToOne
