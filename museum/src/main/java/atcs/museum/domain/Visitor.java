@@ -10,6 +10,6 @@ public class Visitor {
 	private Long id;
 	private String name;
 	//A visitor has one visit
-	@OneToOne
+	@OneToOne(mappedBy ="visitor")
 	private Visit visit;
 }
