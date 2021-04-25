@@ -19,19 +19,19 @@ public class PresentationVisitor {
 	@Column(name = "time_off")
 	private LocalTime timeOff;
 	//end of presentation:System or User
-	@Column(name = "interruption")
-	private Boolean end;
+	@Column(name = "rate")
+	private Long rate;
 	
 	@ManyToOne
 	private Visit visit;
 	@ManyToOne
 	private Presentation presentation;
 	
-	public PresentationVisitor(Presentation p, Visit v, Boolean end) {
+	public PresentationVisitor(Presentation p, Visit v, Long rate) {
 		this.presentation = p;
 		this.visit = v;
 		this.description = presentation.getDescription();
-		this.end = end;
+		this.rate = rate;
 	}
 
 	public Long getId() {
@@ -66,12 +66,12 @@ public class PresentationVisitor {
 		this.timeOff = timeOff;
 	}
 
-	public Boolean getEnd() {
-		return end;
+	public Long getRate() {
+		return rate;
 	}
 
-	public void setEnd(Boolean end) {
-		this.end = end;
+	public void setEnd(Long rate) {
+		this.rate = rate;
 	}
 
 	public Visit getVisit() {
