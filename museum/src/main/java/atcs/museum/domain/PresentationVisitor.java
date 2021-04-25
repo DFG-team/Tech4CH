@@ -7,9 +7,9 @@ import javax.persistence.*;
 @Entity
 public class PresentationVisitor {
 	
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	private Long id;
-	
 	@Column(name = "description")
 	private String description;
 	//time when user start presentation
@@ -19,7 +19,7 @@ public class PresentationVisitor {
 	@Column(name = "time_off")
 	private LocalTime timeOff;
 	//end of presentation:System or User
-	@Column(name = "finish")
+	@Column(name = "interruption")
 	private Boolean end;
 	
 	@ManyToOne
@@ -30,7 +30,6 @@ public class PresentationVisitor {
 	public PresentationVisitor(Presentation p, Visit v, Boolean end) {
 		this.presentation = p;
 		this.visit = v;
-		this.id = presentation.getId();
 		this.description = presentation.getDescription();
 		this.end = end;
 	}
