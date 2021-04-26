@@ -90,6 +90,21 @@ public class VisitService {
 	
 	
 	
+	
+	//Given a Visitor that has done a visit
+	//It return a map with key=id of presentation played by visitor, value=rate given by visitor
+	public HashMap<Long, Integer> getStatsRatingVisitor(Visit visit){
+		List<PresentationVisitor> presentationVisitor = visit.getVisitPresentations();
+		HashMap<Long, Integer> pRating = new HashMap<>();
+		for(PresentationVisitor pV: presentationVisitor) {
+			pRating.put(pV.getId(), pV.getRate());
+		}
+		
+		return pRating;
+		
+	}
+	
+	
 	//Given a Visitor that has done a Visit
 	//It return a map with key=name of the POI, value=the mean time of a group spent in front of the POI
 	public HashMap<String,Long> getMeanTimePoiGroup(Visit visit) {
@@ -126,5 +141,21 @@ public class VisitService {
 		}
 		return meanTimePresentation;
 	}
-	
+
+	//Given a Visitor that has done a visit
+	//It return a map with key=id of presentation played by visitor, value=mean rate given by group mates of visitor
+	public HashMap<Long,Integer> getMeanRatingGroup(Visit visit) {
+		HashMap<Long,Integer> meanRating = new HashMap<>();
+		Visitor v = visit.getVisitor();  //the visitor
+		HashMap<Long, Integer> vPresentation = getStatsRatingVisitor(v.getVisit());
+		List<Visitor> vMates = v.getGroup().getVisitors();
+		for(Long idPresentation: vPresentation.keySet()) {
+			int temp = 0;
+			for(Visitor visitor: vMates) {
+				temp =+ getStatsRatingVisitor(visitor.getVisit()).get(idPresentation);
+			}
+			meanRating.put(idPresentation, temp/(vMates.size()));
+		}
+		return meanRating;
+	}
 }

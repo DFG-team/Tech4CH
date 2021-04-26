@@ -20,7 +20,7 @@ public class PresentationVisitor {
 	private LocalTime timeOff;
 	//end of presentation:System or User
 	@Column(name = "rate")
-	private Long rate;
+	private int rate;
 	@Column(name = "interruption")
 	private Boolean interruption;
 	
@@ -29,7 +29,7 @@ public class PresentationVisitor {
 	@ManyToOne
 	private Presentation presentation;
 	
-	public PresentationVisitor(Presentation p, Visit v, Long rate) {
+	public PresentationVisitor(Presentation p, Visit v, int rate) {
 		this.presentation = p;
 		this.visit = v;
 		this.description = presentation.getDescription();
@@ -68,11 +68,11 @@ public class PresentationVisitor {
 		this.timeOff = timeOff;
 	}
 
-	public Long getRate() {
+	public int getRate() {
 		return rate;
 	}
 
-	public void setEnd(Long rate) {
+	public void setEnd(int rate) {
 		this.rate = rate;
 	}
 
@@ -100,7 +100,7 @@ public class PresentationVisitor {
 		this.interruption = interruption;
 	}
 
-	public void setRate(Long rate) {
+	public void setRate(int rate) {
 		this.rate = rate;
 	}
 	
