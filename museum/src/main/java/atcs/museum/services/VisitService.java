@@ -31,7 +31,10 @@ public class VisitService {
 	public Visit getVisitByVisitor(Visitor visitor) {
 		return this.visitRepository.findByVisitor(visitor);
 	}
-	
+	@Transactional
+	public List<Visit> getAllVisit(){
+		return (List<Visit>) visitRepository.findAll();
+	}
 	
 	//**INDIVIDUAL**//
 	//Play-back of individual visit

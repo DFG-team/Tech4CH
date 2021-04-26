@@ -24,6 +24,9 @@ public class Visit {
 		 this.visitPresentations = vPr;
 	 }
 	 
+	 /*public Visit() {
+		 
+	 }*/
 	 
 	 public void addPresentation(PresentationVisitor p) {
 		 this.visitPresentations.add(p);
