@@ -75,5 +75,20 @@ public class VisitService {
 		}
 		return pInterruption;
 	}
+	//Return the mean time of a group spent in front of the POIs
+	public HashMap<String,Long> getMeanTimePoisGroup(Visit visit) {
+		HashMap<String,Long> meanTimePoi = new HashMap<>(); //a map with key=name of the poi, value=mean time of group in front of POI
+		Visitor v = visit.getVisitor();  //the visitor
+		HashMap<String, Long> vPois = getStatsPoiVisitor(v.getVisit()); //the pois visited by the visitor
+		List<Visitor> vMates = v.getGroup().getVisitors();   //mates of the visitor
+		for(String namePoi: vPois.keySet()) { //for every pois visited by the visitor
+			Long temp = null;
+			for(Visitor visitor: vMates) { //for every group mate of the visitor
+				temp =+ getStatsPoiVisitor(visitor.getVisit()).get(namePoi); //sum the time spent in front of the poi
+			}
+			meanTimePoi.put(namePoi, temp/(vMates.size())); //put in the map the mean time(temp/sizeof group) for this poi
+		}
+		return meanTimePoi;
+	}
 	
 }
