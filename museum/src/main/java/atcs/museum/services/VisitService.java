@@ -75,7 +75,7 @@ public class VisitService {
 		}
 		return pInterruption;
 	}
-	//Return the mean time of a group spent in front of the POIs
+	//Return a map with key=name of the POI, value=the mean time of a group spent in front of the POI
 	public HashMap<String,Long> getMeanTimePoisGroup(Visit visit) {
 		HashMap<String,Long> meanTimePoi = new HashMap<>(); //a map with key=name of the poi, value=mean time of group in front of POI
 		Visitor v = visit.getVisitor();  //the visitor
