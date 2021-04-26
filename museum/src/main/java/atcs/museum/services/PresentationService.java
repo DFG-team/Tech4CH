@@ -12,6 +12,4 @@ public class PresentationService {
 	public Long getTime(PresentationVisitor pV) {
 		return ChronoUnit.MINUTES.between(pV.getTimeOff(), pV.getTimeOn());
 	}
-
-
 }

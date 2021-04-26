@@ -30,29 +30,16 @@ public class VisitService {
 	public Visit getVisitByVisitor(Visitor visitor) {
 		return this.visitRepository.findByVisitor(visitor);
 	}
-	@Transactional
-	public void addPresentationToVisit(PresentationVisitor p,Long idVisit) {
-		Visit v = visitRepository.findById(idVisit).get();
-		v.addPresentation(p);
-	}
 	
+	//Play-back with PointOfInterest list (speed-up missing)
 	@Transactional
-	public void addPOIToVisit(PointOfInterestVisitor poi,Long idVisit) {
-		Visit v = visitRepository.findById(idVisit).get();
-		v.addPOI(poi);
-	}
-	@Transactional
-	public List<PointOfInterestVisitor> getVisitPath(Visit v){
+	public List<PointOfInterestVisitor> getVisitPlayback(Visit v){
 		return v.getVisitPois();
 	}
 	
-	//@Transactional
-	//public List<PresentationVisitor> getVisitPresentations(Visit v){
-	//	return v.getVisitPresentations();
-	//}
-	
+	//Return a map with every POI visited by the visitor and the amount of time spent in front of the POI
 	@Transactional
-	public void getStatsPoiVisitor(Visit visit) {
+	public HashMap<String, Long> getStatsPoiVisitor(Visit visit) {
 		List<PointOfInterestVisitor> poisVisitor = visit.getVisitPois();
 		
 		HashMap<String, Long> poisTime = new HashMap<>();
@@ -60,9 +47,13 @@ public class VisitService {
 			poisTime.put(poiV.getName(), (this.poiService.getTime(poiV)));
 		}
 		
+		return poisTime;
+		
 	}
+	
+	//Return a map with every presentation played by the visitor and the amount of time spent listening the presentation
 	@Transactional
-	public void getStatsPresentationVisitor(Visit visit) {
+	public HashMap<Long, Long> getStatsPresentationVisitor(Visit visit) {
 		List<PresentationVisitor> presentationVisitor = visit.getVisitPresentations();
 		
 		HashMap<Long, Long> pTime = new HashMap<>();
@@ -70,6 +61,19 @@ public class VisitService {
 			pTime.put(pV.getId(), (this.pService.getTime(pV)));
 		}
 		
+		return pTime;
+	}
+	
+	//Return a map with every presentation played by the visitor and the cause of the interruption of it(1=System, 0=User)
+	@Transactional
+	public HashMap<Long, Boolean> getInterruptionPresentation(Visit visit) {
+		List<PresentationVisitor> presentationVisitor = visit.getVisitPresentations();
+		
+		HashMap<Long, Boolean> pInterruption = new HashMap<>();
+		for(PresentationVisitor pV: presentationVisitor) {
+			pInterruption.put(pV.getId(), pV.getInterruption());
+		}
+		return pInterruption;
 	}
 	
 }

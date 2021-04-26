@@ -21,6 +21,8 @@ public class PresentationVisitor {
 	//end of presentation:System or User
 	@Column(name = "rate")
 	private Long rate;
+	@Column(name = "interruption")
+	private Boolean interruption;
 	
 	@ManyToOne
 	private Visit visit;
@@ -89,6 +91,19 @@ public class PresentationVisitor {
 	public void setPresentation(Presentation presentation) {
 		this.presentation = presentation;
 	}
+
+	public Boolean getInterruption() {
+		return interruption;
+	}
+
+	public void setInterruption(Boolean interruption) {
+		this.interruption = interruption;
+	}
+
+	public void setRate(Long rate) {
+		this.rate = rate;
+	}
+	
 	
 
 }
