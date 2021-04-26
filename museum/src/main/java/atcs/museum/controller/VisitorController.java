@@ -8,11 +8,7 @@ public class VisitorController {
 	
 
 	
-	
-	@RequestMapping("/")
-	public String home() {
-	return "index";
-	}
+
 	
 	
 	
