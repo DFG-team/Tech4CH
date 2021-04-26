@@ -6,11 +6,17 @@ import javax.persistence.*;
 
 @Entity
 public class Group {
-	
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	Long id;
 	@OneToMany(mappedBy = "group")
 	private List<Visitor> visitors;
+	
+	public Group(List<Visitor> visitors) {
+		this.visitors = visitors;
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -23,6 +29,6 @@ public class Group {
 	public void setVisitors(List<Visitor> visitors) {
 		this.visitors = visitors;
 	}
-	
+
 
 }

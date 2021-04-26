@@ -19,7 +19,6 @@ public class Visit {
 	 @OneToOne
 	 private Visitor visitor;
 	 
-	 
 	 public Visit(List<PointOfInterestVisitor> vP, List<PresentationVisitor> vPr) {
 		 this.visitPois = vP;
 		 this.visitPresentations = vPr;
