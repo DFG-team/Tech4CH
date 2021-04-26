@@ -90,24 +90,28 @@ public class VisitService {
 	
 	
 	
-	//Return a map with key=name of the POI, value=the mean time of a group spent in front of the POI
+	//Given a Visitor that has done a Visit
+	//It return a map with key=name of the POI, value=the mean time of a group spent in front of the POI
 	public HashMap<String,Long> getMeanTimePoiGroup(Visit visit) {
 		HashMap<String,Long> meanTimePoi = new HashMap<>(); //a map with key=name of the poi, value=mean time of group in front of POI
 		Visitor v = visit.getVisitor();  //the visitor
 		HashMap<String, Long> vPois = getStatsPoiVisitor(v.getVisit()); //the pois visited by the visitor
-		List<Visitor> vMates = v.getGroup().getVisitors();   //mates of the visitor
+		List<Visitor> vMates = v.getGroup().getVisitors();   //groupmates of the visitor
 		for(String namePoi: vPois.keySet()) { //for every pois visited by the visitor
 			Long temp = null;
+
 			for(Visitor visitor: vMates) { //for every group mate of the visitor
 				temp =+ getStatsPoiVisitor(visitor.getVisit()).get(namePoi); //sum the time spent in front of the poi
 			}
+			
+			
 			meanTimePoi.put(namePoi, temp/(vMates.size())); //put in the map the mean time(temp/sizeof group) for this poi
 		}
 		return meanTimePoi;
 	}
 	
-	
-	//Return a map with key=id of presentation, value=the mean time of a group listening presentation
+	//Given a Visitor that has done a Visit
+	//It Return a map with key=id of presentation, value=the mean time of a group listening presentation
 	public HashMap<Long, Long> getMeanTimePresentationGroup(Visit visit) {
 		HashMap<Long,Long> meanTimePresentation = new HashMap<>(); //a map with key=name of the poi, value=mean time of group in front of POI
 		Visitor v = visit.getVisitor();  //the visitor
@@ -122,4 +126,5 @@ public class VisitService {
 		}
 		return meanTimePresentation;
 	}
+	
 }
