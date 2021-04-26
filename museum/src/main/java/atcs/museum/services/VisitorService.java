@@ -15,10 +15,6 @@ public class VisitorService {
 	@Autowired
 	private VisitorRepository visitorRepository;
 	
-	@Transactional
-	public Visitor getByName(String name) {
-		return (Visitor)this.visitorRepository.findByName(name);
-	}
 	
 	@Transactional
 	public Visitor getById(Long id) {
