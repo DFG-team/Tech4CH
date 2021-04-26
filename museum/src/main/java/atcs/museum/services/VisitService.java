@@ -78,7 +78,7 @@ public class VisitService {
 	
 	//Return a map with every presentation played by the visitor and the cause of the interruption of it(1=System, 0=User)
 	@Transactional
-	public HashMap<Long, Boolean> getInterruptionPresentation(Visit visit) {
+	public HashMap<Long, Boolean> getStatsInterruptionPresentation(Visit visit) {
 		List<PresentationVisitor> presentationVisitor = visit.getVisitPresentations();
 		
 		HashMap<Long, Boolean> pInterruption = new HashMap<>();
@@ -91,7 +91,7 @@ public class VisitService {
 	
 	
 	//Return a map with key=name of the POI, value=the mean time of a group spent in front of the POI
-	public HashMap<String,Long> getMeanTimePoisGroup(Visit visit) {
+	public HashMap<String,Long> getMeanTimePoiGroup(Visit visit) {
 		HashMap<String,Long> meanTimePoi = new HashMap<>(); //a map with key=name of the poi, value=mean time of group in front of POI
 		Visitor v = visit.getVisitor();  //the visitor
 		HashMap<String, Long> vPois = getStatsPoiVisitor(v.getVisit()); //the pois visited by the visitor
@@ -106,4 +106,20 @@ public class VisitService {
 		return meanTimePoi;
 	}
 	
+	
+	//Return a map with key=id of presentation, value=the mean time of a group listening presentation
+	public HashMap<Long, Long> getMeanTimePresentationGroup(Visit visit) {
+		HashMap<Long,Long> meanTimePresentation = new HashMap<>(); //a map with key=name of the poi, value=mean time of group in front of POI
+		Visitor v = visit.getVisitor();  //the visitor
+		HashMap<Long, Long> vPresentation = getStatsPresentationVisitor(v.getVisit()); //the pois visited by the visitor
+		List<Visitor> vMates = v.getGroup().getVisitors();   //mates of the visitor
+		for(Long idPresentation: vPresentation.keySet()) {
+			Long temp = null;
+			for(Visitor visitor: vMates) {
+				temp =+ getStatsPresentationVisitor(visitor.getVisit()).get(idPresentation);
+			}
+			meanTimePresentation.put(idPresentation, temp/(vMates.size()));
+		}
+		return meanTimePresentation;
+	}
 }
