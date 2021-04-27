@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DBPopulation implements ApplicationRunner {
-	
+
 	public void run(ApplicationArguments args) throws Exception {
 		//this.deleteAll();
 		//this.populateDB();
