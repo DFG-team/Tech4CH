@@ -16,7 +16,7 @@ import atcs.museum.repository.VisitorRepository;
 
 import org.json.simple.*;
 
-public class jsonTrasform {
+public class JsonTrasform {
 	
 	@Autowired
 	VisitorRepository visitorRepository;
@@ -24,34 +24,38 @@ public class jsonTrasform {
 	private Visitor visitor;
 	
     public static void main(String[] args) {
-
+  
         JSONParser parser = new JSONParser();
 
         try {     
         	
         
-        	JSONArray a = (JSONArray) parser.parse(new FileReader("resource/Data/T4CH_data.json"));
+        	JSONArray visitor = (JSONArray) parser.parse(new FileReader("resource/Data/T4CH_data.json"));
 
-        	  for (Object o : a)
+        	  for (Object o : visitor)
         	  {
-        	    JSONObject visitor = (JSONObject) o;
+        	    JSONObject v = (JSONObject) o;
                 
         	    //Visitor v = new Visitor();
-        	    String numberString = (String) visitor.get("number");
+        	    String visitor_id_string = (String) v.get("number");
         	    
         	    //Trasform string number of visitor in a integer (provate con long se riuscite)
                 try{
-                    int number = Integer.parseInt(numberString);
-                    System.out.println(number); // output = 146
+                    Long visitor_id = Long.parseLong(visitor_id_string);
+                    System.out.println("\n\n\nNew Visitor:");
+                    System.out.println("\nvisitor_id:" + visitor_id); // output = 146
                 }
                 catch (NumberFormatException ex){
                     ex.printStackTrace();
                 }
         	    
-        	    String group_number = (String) visitor.get("group_number");
-        	    
+        	    String group_id_string = (String) v.get("group_number");  
+        	    Long group_id = Long.parseLong(group_id_string); 
+        	    System.out.println("\ngroup_id:" + group_id);
         	    System.out.println("\nPoi Data");
-        	    JSONArray pointOfInterest = (JSONArray) visitor.get("pointOfInterests");
+        	    
+        	    
+        	    JSONArray pointOfInterest = (JSONArray) v.get("pointOfInterests");
 
         	    for (Object c : pointOfInterest)
         	    {
@@ -71,7 +75,7 @@ public class jsonTrasform {
         	      //System.out.println(c+"");
         	    }
         	    System.out.println("\nPresentation Data");
-        	    JSONArray presentation = (JSONArray) visitor.get("presentations");
+        	    JSONArray presentation = (JSONArray) v.get("presentations");
         	    for (Object d : presentation)
         	    {
         	    	JSONObject p = (JSONObject) d;

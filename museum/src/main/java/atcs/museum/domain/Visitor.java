@@ -4,12 +4,9 @@ import javax.persistence.*;
 
 @Entity
 public class Visitor {
-	
-	@GeneratedValue(strategy=GenerationType.AUTO)
+
 	@Id
 	private Long id;
-	@Column(name = "name")
-	private String name;
 	@Column(name = "id_group")
 	private Long idGroup;
 	
@@ -19,8 +16,8 @@ public class Visitor {
 	@ManyToOne
 	private Group group;
 	
-	public Visitor(String name, Visit visit) {
-		this.name = name;
+	public Visitor(int id, Visit visit) {
+		
 		this.visit = visit;
 	}
 
@@ -28,16 +25,8 @@ public class Visitor {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public Long setId(Long id) {
+		return this.id = id;
 	}
 
 	public Long getIdGroup() {
