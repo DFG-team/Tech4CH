@@ -35,7 +35,16 @@ public class jsonTrasform {
         	    JSONObject visitor = (JSONObject) o;
                 
         	    //Visitor v = new Visitor();
-        	    String number = (String) visitor.get("number");
+        	    String numberString = (String) visitor.get("number");
+        	    
+        	    //Trasform string number of visitor in a integer (provate con long se riuscite)
+                try{
+                    int number = Integer.parseInt(numberString);
+                    System.out.println(number); // output = 146
+                }
+                catch (NumberFormatException ex){
+                    ex.printStackTrace();
+                }
         	    
         	    String group_number = (String) visitor.get("group_number");
         	    
@@ -43,10 +52,14 @@ public class jsonTrasform {
 
         	    for (Object c : pointOfInterest)
         	    {
+        	    	JSONObject poi = (JSONObject) c;
+        	    	String name = (String) poi.get("name");
+        	    	System.out.println("name");
+        	    	
         	      System.out.println(c+"");
         	    }
         	    
-        	    System.out.println(number);
+        	    
         	    System.out.println(group_number);
 
 
