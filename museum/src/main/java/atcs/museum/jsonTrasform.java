@@ -2,6 +2,8 @@ package atcs.museum;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Iterator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -54,9 +56,18 @@ public class jsonTrasform {
         	    {
         	    	JSONObject poi = (JSONObject) c;
         	    	String name = (String) poi.get("name");
-        	    	System.out.println("name");
+        	    	System.out.println(name);
         	    	
-        	      System.out.println(c+"");
+        	    	String start_time = (String) poi.get("start_time");
+        	    	LocalTime start_time_VisitorPoi = LocalTime.parse(start_time);
+        	    	System.out.println(start_time_VisitorPoi);
+        	    	
+        	    	String end_time = (String) poi.get("end_time");
+        	    	LocalTime end_time_VisitorPoi = LocalTime.parse(end_time);
+        	    	System.out.println(end_time_VisitorPoi);
+        	    	
+        	    	
+        	      //System.out.println(c+"");
         	    }
         	    
         	    
