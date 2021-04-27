@@ -1,5 +1,6 @@
 package atcs.museum.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -11,17 +12,18 @@ public class Visit {
 	@Id
 	private Long id;
 	
-	@OneToMany(mappedBy="visit")
+	@OneToMany(mappedBy="visit", cascade = CascadeType.ALL)
 	private List<PointOfInterestVisitor> visitPois;
-	@OneToMany(mappedBy="visit")
+	@OneToMany(mappedBy="visit", cascade = CascadeType.ALL)
 	private List<PresentationVisitor> visitPresentations;
 	
-	 @OneToOne
+	 @OneToOne(cascade = CascadeType.ALL)
 	 private Visitor visitor;
-	 
-	 public Visit(List<PointOfInterestVisitor> vP, List<PresentationVisitor> vPr) {
-		 this.visitPois = vP;
-		 this.visitPresentations = vPr;
+
+	 public Visit() {
+		 super();
+		 this.visitPois = new ArrayList<>();
+		 this.visitPresentations = new ArrayList<>();
 	 }
 	 
 	 /*public Visit() {

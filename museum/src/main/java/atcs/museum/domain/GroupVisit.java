@@ -5,19 +5,22 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-public class Group {
+public class GroupVisit {
 	
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	Long id;
-	@OneToMany(mappedBy = "group")
+	@OneToMany(mappedBy = "group_visit", cascade = CascadeType.ALL)
 	private List<Visitor> visitors;
 	
 	@Column(name = "size")
 	private int size;
+	
+	public GroupVisit() {
 		
-	public Group(List<Visitor> visitors) {
-		this.visitors = visitors;
+	}
+	public GroupVisit(List<Visitor> visitors, Long id) {
+		super();
+		this.id = id;
 		this.size =  visitors.size();
 	}
 	

@@ -8,15 +8,11 @@ public class Presentation {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	private Long id;
-	@Column(name = "description")
-	private String description;
+	@Column(name = "name")
+	private String name;
 	
-	@OneToMany(mappedBy = "presentation")
-	private List<PresentationVisitor> presentationVisitor;
-	
-	public Presentation(String description, List<PresentationVisitor> pV) {
-		this.description = description;
-		this.presentationVisitor = pV;
+	public Presentation(String description) {
+		this.name = description;
 	}
 		
 	public Long getId() {
@@ -25,11 +21,11 @@ public class Presentation {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getDescription() {
-		return description;
+	public String getName() {
+		return name;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

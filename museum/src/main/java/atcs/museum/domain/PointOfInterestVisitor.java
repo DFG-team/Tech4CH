@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 public class PointOfInterestVisitor {
-	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private Long id;
 	//time when visitor arrives on POI
@@ -17,17 +17,18 @@ public class PointOfInterestVisitor {
 	private LocalTime timeOut;
 	@Column(name = "name")
 	private String name;
-	
-	@ManyToOne
+	@OneToOne
 	private PointOfInterest poi;
 	@ManyToOne
 	private Visit visit;
 	
-	public PointOfInterestVisitor(PointOfInterest poi, Visit v) {
+	public PointOfInterestVisitor(PointOfInterest poi, Visit v, LocalTime t1, LocalTime t2) {
 		this.poi = poi;
 		this.visit = v;
 		this.id = this.poi.getId();
 		this.name = this.poi.getName();
+		this.timeIn = t1;
+		this.timeOut = t2;
 	}
 
 	public Long getId() {

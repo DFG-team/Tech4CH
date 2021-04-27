@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.*;
 import org.springframework.stereotype.Service;
 
-import atcs.museum.domain.Group;
+import atcs.museum.domain.*;
 import atcs.museum.domain.PointOfInterest;
 import atcs.museum.domain.PointOfInterestVisitor;
 import atcs.museum.domain.Presentation;
@@ -47,7 +47,7 @@ public class VisitService {
 	//**GROUP**//
 	//Play-back of group visit
 	@Transactional
-	public HashMap<Long, List<PointOfInterestVisitor>> getGroupVisitPath(Group group){
+	public HashMap<Long, List<PointOfInterestVisitor>> getGroupVisitPath(GroupVisit group){
 		HashMap<Long, List<PointOfInterestVisitor>> visits = new HashMap<>();
 		
 		for(Visitor v: group.getVisitors()) {
@@ -115,7 +115,7 @@ public class VisitService {
 	}
 	
 	
-	//**INDIVIDUAL**//
+	//**INDIVIDUAL*//
 	//Given a Visitor that has done a Visit
 	//It return a map with key=name of the POI, value=the mean time of a group spent in front of the POI
 	public HashMap<String,Long> getMeanTimePoiGroup(Visit visit) {

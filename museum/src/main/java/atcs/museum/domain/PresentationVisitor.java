@@ -9,14 +9,14 @@ public class PresentationVisitor {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Id
 	private Long id;
-	@Column(name = "description")
-	private String description;
 	//time when user start presentation
 	@Column(name = "time_on")
 	private LocalTime timeOn;
 	//time when user stop presentation
 	@Column(name = "time_off")
 	private LocalTime timeOff;
+	@Column(name = "name")
+	private String name;
 	//end of presentation:System or User
 	@Column(name = "rate")
 	private int rate;
@@ -25,14 +25,17 @@ public class PresentationVisitor {
 	
 	@ManyToOne
 	private Visit visit;
-	@ManyToOne
+	@OneToOne
 	private Presentation presentation;
 	
-	public PresentationVisitor(Presentation p, Visit v, int rate) {
+	public PresentationVisitor(Presentation p, Visit v, int rate, LocalTime t1, LocalTime t2, Boolean interr) {
 		this.presentation = p;
 		this.visit = v;
-		this.description = presentation.getDescription();
+		this.name = this.presentation.getName();
 		this.rate = rate;
+		this.timeOn = t1;
+		this.timeOff = t2;
+		this.interruption = interr;
 	}
 
 	public Long getId() {
@@ -43,12 +46,12 @@ public class PresentationVisitor {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getName() {
+		return name;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public LocalTime getTimeOn() {

@@ -1,5 +1,7 @@
 package atcs.museum.domain;
 
+import java.util.ArrayList;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,14 +13,17 @@ public class Visitor {
 	private Long idGroup;
 	
 	//A visitor has one visit
-	@OneToOne(mappedBy ="visitor")
+	@OneToOne(mappedBy ="visitor", cascade = CascadeType.ALL)
 	private Visit visit;
-	@ManyToOne
-	private Group group;
-	
-	public Visitor(int id, Visit visit) {
+	@ManyToOne(cascade = CascadeType.ALL)
+	private GroupVisit group_visit;
+	public Visitor() {
 		
-		this.visit = visit;
+	}
+	public Visitor(Long id, Long idGroup) {
+		super();
+		this.id = id;
+		this.idGroup = idGroup;
 	}
 
 	public Long getId() {
@@ -45,12 +50,12 @@ public class Visitor {
 		this.visit = visit;
 	}
 
-	public Group getGroup() {
-		return group;
+	public GroupVisit getGroup() {
+		return group_visit;
 	}
 
-	public void setGroup(Group group) {
-		this.group = group;
+	public void setGroup(GroupVisit group) {
+		this.group_visit = group;
 	}
 	
 }
