@@ -23,16 +23,13 @@ public class CuratorController {
 	
 	@RequestMapping("/")
 	public String home() {
-	return "index";
+	return "homePage";
 	}
     
-	@RequestMapping("/playbackVisit")
-	public String playBackVisitUser(Model model) {
-		model.addAttribute("visitor",this.visitorService.getAllVisitor());
-		return "playbackVisit";
+	@RequestMapping("/curatorPanel")
+	public String curatorPanel() {
+	return "curatorPanel";
 	}
-	
-
 	//Html page about a visit summary for a selected visitor or group
 	//For example where they visited,how much time spent, what presentation they watch
 	@RequestMapping("/visitSummary")

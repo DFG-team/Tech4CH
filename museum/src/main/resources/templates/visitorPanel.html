@@ -4,8 +4,10 @@
 	templatestock.co @templatestock
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html"
+	lang="en">
 
-<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,7 +49,7 @@
 						<div id="countdown" class="white-text"></div>
 					</div>
 				</div>
-			</div>
+			
 			<div class="animation">
 			<a class="arrow-down-animation" data-scroll href="#about"><i class="fa fa-angle-down"></i></a>
 			</div>
@@ -59,10 +61,14 @@
 			<div class="container">
 				<div class="row text-center">
 				<h1 class="black-text">Visitor's List</h1>
-				<ul>
-				    <li th:each="visitor:${visitors}"><font face="Times New Roman" size="4" color="black">
-				    <!-- pagina del visitatore con il suo path  <a th:href="@{}" 
-							th:text="${visitor.nome}">nome fittizio per thymyleaf</a></font></li> -->
+			<ul>
+			<li th:each="visitor:${visitors}"><font
+				face="Times New Roman" size="4" color="black"><a
+					th:text="${visitor.id}">titolo Piervy</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button
+						type="submit">Aggiungi</button></a></li>
+
+
+
 		</ul>
 				</div>
 			</div>
