@@ -86,13 +86,30 @@ public class jsonTrasform {
         	    	LocalTime end_time_VisitorPres = LocalTime.parse(end_time_pres);
         	    	System.out.println(end_time_VisitorPres);
         	    	
-        	    
+        	        Long interruption =(Long) p.get("interruption");
+        	        Boolean bol;
+        	        if(interruption == 1)
+        	        	bol=true;
+        	        else {
+        	        	bol=false;}
+        	        System.out.println( bol);
+                     
+        	        
+        	        String rate = (String) p.get("rate");
+        	        try{
+        	        int rate_int = Integer.parseInt(rate);
+        	        System.out.println(rate_int);
+        	        }
+                    catch (NumberFormatException ex){
+                        ex.printStackTrace();
+                    }
+        	        
         	    	
         	    	
         	      //System.out.println(c+"");
         	    }
         	    
-        	    System.out.println(group_number);
+        	    
 
 
             
