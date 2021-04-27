@@ -14,10 +14,11 @@ public class Group {
 	private List<Visitor> visitors;
 	
 	@Column(name = "size")
-	private int size = visitors.size();
-	
+	private int size;
+		
 	public Group(List<Visitor> visitors) {
 		this.visitors = visitors;
+		this.size =  visitors.size();
 	}
 	
 	
