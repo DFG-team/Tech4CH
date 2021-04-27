@@ -1,7 +1,6 @@
 package atcs.museum.domain;
 
 import java.time.LocalTime;
-
 import javax.persistence.*;
 
 @Entity
@@ -104,6 +103,4 @@ public class PresentationVisitor {
 		this.rate = rate;
 	}
 	
-	
-
 }

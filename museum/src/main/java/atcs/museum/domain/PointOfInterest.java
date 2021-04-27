@@ -1,8 +1,6 @@
 package atcs.museum.domain;
 
-import java.time.LocalTime;
 import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
@@ -25,7 +23,6 @@ public class PointOfInterest {
 		this.room = r;
 		this.poiVisitor = poiV;
 	}
-	
 	
 	public Long getId() {
 		return id;
@@ -53,7 +50,6 @@ public class PointOfInterest {
 	public List<PointOfInterestVisitor> getPoiVisitor() {
 		return poiVisitor;
 	}
-
 
 	public void setPoiVisitor(List<PointOfInterestVisitor> poiVisitor) {
 		this.poiVisitor = poiVisitor;

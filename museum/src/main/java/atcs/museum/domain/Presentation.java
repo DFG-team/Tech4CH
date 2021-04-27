@@ -1,6 +1,5 @@
 package atcs.museum.domain;
 import javax.persistence.*;
-import java.time.*;
 import java.util.List;
 
 @Entity
@@ -19,10 +18,7 @@ public class Presentation {
 		this.description = description;
 		this.presentationVisitor = pV;
 	}
-	
-	
-	
-	
+		
 	public Long getId() {
 		return id;
 	}
@@ -35,6 +31,5 @@ public class Presentation {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 }
