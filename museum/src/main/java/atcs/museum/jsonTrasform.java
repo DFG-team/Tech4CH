@@ -50,6 +50,7 @@ public class jsonTrasform {
         	    
         	    String group_number = (String) visitor.get("group_number");
         	    
+        	    System.out.println("\nPoi Data");
         	    JSONArray pointOfInterest = (JSONArray) visitor.get("pointOfInterests");
 
         	    for (Object c : pointOfInterest)
@@ -58,18 +59,38 @@ public class jsonTrasform {
         	    	String name = (String) poi.get("name");
         	    	System.out.println(name);
         	    	
-        	    	String start_time = (String) poi.get("start_time");
-        	    	LocalTime start_time_VisitorPoi = LocalTime.parse(start_time);
+        	    	String start_time_poi = (String) poi.get("start_time");
+        	    	LocalTime start_time_VisitorPoi = LocalTime.parse(start_time_poi);
         	    	System.out.println(start_time_VisitorPoi);
         	    	
-        	    	String end_time = (String) poi.get("end_time");
-        	    	LocalTime end_time_VisitorPoi = LocalTime.parse(end_time);
+        	    	String end_time_poi = (String) poi.get("end_time");
+        	    	LocalTime end_time_VisitorPoi = LocalTime.parse(end_time_poi);
         	    	System.out.println(end_time_VisitorPoi);
         	    	
         	    	
         	      //System.out.println(c+"");
         	    }
+        	    System.out.println("\nPresentation Data");
+        	    JSONArray presentation = (JSONArray) visitor.get("presentations");
+        	    for (Object d : presentation)
+        	    {
+        	    	JSONObject p = (JSONObject) d;
+        	    	String name = (String) p.get("name");
+        	    	System.out.println(name);
+        	    	
+        	    	String start_time_pres = (String) p.get("start_time");
+        	    	LocalTime start_time_VisitorPres = LocalTime.parse(start_time_pres);
+        	    	System.out.println(start_time_VisitorPres);
+        	    	
+        	    	String end_time_pres = (String) p.get("end_time");
+        	    	LocalTime end_time_VisitorPres = LocalTime.parse(end_time_pres);
+        	    	System.out.println(end_time_VisitorPres);
+        	    	
         	    
+        	    	
+        	    	
+        	      //System.out.println(c+"");
+        	    }
         	    
         	    System.out.println(group_number);
 
