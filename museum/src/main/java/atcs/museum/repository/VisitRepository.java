@@ -1,9 +1,6 @@
 package atcs.museum.repository;
 
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
-
 import atcs.museum.domain.Visit;
 import atcs.museum.domain.Visitor;
 
