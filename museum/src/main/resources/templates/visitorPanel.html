@@ -64,8 +64,8 @@
 			<ul>
 			<li th:each="visitor:${visitors}"><font
 				face="Times New Roman" size="4" color="black"><a
-					th:text="${visitor.id}">titolo Piervy</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button
-						type="submit">Aggiungi</button></a></li>
+				th:href="@{'visitorSummary' + '/' + 'group' + ${group.id}}"
+					th:text="${visitor.id}">titolo Piervy</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
 
 
 

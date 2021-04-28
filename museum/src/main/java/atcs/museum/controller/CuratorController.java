@@ -3,8 +3,10 @@ package atcs.museum.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import atcs.museum.repository.GroupRepository;
 import atcs.museum.repository.VisitorRepository;
 import atcs.museum.services.VisitService;
 import atcs.museum.services.VisitorService;
@@ -16,7 +18,8 @@ public class CuratorController {
 	private VisitService visitService;
 	@Autowired
 	private VisitorRepository visitorRepository;
-	
+	@Autowired
+	private GroupRepository groupRepository;
 	@Autowired
 	private VisitorService visitorService;
 	
@@ -32,11 +35,17 @@ public class CuratorController {
 	}
 	//Html page about a visit summary for a selected visitor or group
 	//For example where they visited,how much time spent, what presentation they watch
-	@RequestMapping("/visitSummary")
+	@RequestMapping("/groupsList")
 	public String visitSummary(Model model) {
+		model.addAttribute("groups", this.groupRepository.findAll());
 		
-		return "visitSummary";
+		return "groupsList";
 	
+	}
+	@RequestMapping("/groupsList/group{IdG}")
+	public String groupList(@PathVariable("IdG")Long idG, Model model) {
+		model.addAttribute("visitors", this.groupRepository.findById(idG).get().getVisitors());
+		return "visitorsList";
 	}
 	//Html page about statistic for all visit
 	@RequestMapping("/museumStatistic")

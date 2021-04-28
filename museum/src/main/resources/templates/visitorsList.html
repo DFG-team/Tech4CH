@@ -41,7 +41,7 @@
 					<div class="col-md-8">
 						
 						<h1 class="white-text">Visit </h1>
-						<h5 class="white-text">Scroll down, choose your visitor/group and see the summary visit</h5>
+						<h5 class="white-text">Scroll down, choose a group and see the visitors in it.</h5>
 						
 					</div>
 						<div id="countdown" class="white-text"></div>
@@ -54,9 +54,21 @@
 		</section>
 	<!-- HEADER ENDS -->
 		
-	<!-- ABOUT -->
+<!-- ABOUT -->
 		<section id="about">
-			
+			<div class="container">
+				<div class="row text-center">
+				<h1 class="black-text">Visitor's List</h1>
+			<ul>
+			<li th:each="visitor:${visitors}"><font
+				face="Times New Roman" size="4" color="black"><a
+					th:text="${visitor.id}">Visitors</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
+
+
+
+		</ul>
+				</div>
+			</div>
 		</section>
 	<!-- ABOUT ENDS -->
 	

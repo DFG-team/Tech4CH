@@ -9,8 +9,6 @@ public class Visitor {
 
 	@Id
 	private Long id;
-	@Column(name = "id_group")
-	private Long idGroup;
 	
 	//A visitor has one visit
 	@OneToOne(mappedBy ="visitor", cascade = CascadeType.ALL)
@@ -20,10 +18,9 @@ public class Visitor {
 	public Visitor() {
 		
 	}
-	public Visitor(Long id, Long idGroup) {
+	public Visitor(Long id) {
 		super();
 		this.id = id;
-		this.idGroup = idGroup;
 	}
 
 	public Long getId() {
@@ -32,14 +29,6 @@ public class Visitor {
 
 	public Long setId(Long id) {
 		return this.id = id;
-	}
-
-	public Long getIdGroup() {
-		return idGroup;
-	}
-
-	public void setIdGroup(Long idGroup) {
-		this.idGroup = idGroup;
 	}
 
 	public Visit getVisit() {
