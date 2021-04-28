@@ -60,15 +60,20 @@
 		<section id="about">
 			<div class="container">
 				<div class="row text-center">
-				<h1 class="black-text">Visitor's List</h1>
+				<h1 class="black-text">Visitor playback</h1>
+				<h3 class="black-text">There you can see your visitor path</h3>
 			<ul>
-			<li th:each="visitor:${visitors}"><font
-				face="Times New Roman" size="4" color="black"><a  
-				  th:href="@{'visitorPlayback' + '/' + 'visitor' + ${visitor.id}}"
-					 th:text="${visitor.id}">titolo Piervy</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+			<li th:each="playbackPoi:${playbackPois}"><font
+				face="Times New Roman" size="4" color="black"
+					 th:text=" ' Name Stage:' +' '+ ${playbackPoi.name}">titolo Piervy</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
 
-
-
+		</ul>
+		<h1 class="black-text">You can speed up your visit in this way</h1>
+		<font
+				face="Times New Roman" size="4" color="black"
+					 th:text=" ' You go on same stage :' +' '+ ${double_touch} + 'times'">title</font>
+		<ul>
+				
 		</ul>
 				</div>
 			</div>

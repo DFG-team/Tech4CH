@@ -18,11 +18,12 @@ public class MuseumStatsService {
 	
 	
 	
-	//public HashMap<LocalTime, Integer> getVisitorsPerHour(){
-		//List<Visitor> visitors = (List<Visitor>) visitorRepository.findAll();
-		//for(Visitor v: visitors) {
+	/*public HashMap<LocalTime, Integer> getVisitorsPerHour(){
+		List<Visitor> visitors = (List<Visitor>) visitorRepository.findAll();
+		for(Visitor v: visitors) {
+			*/
 			
-		//}
-	//}
+	
+	
 
 }

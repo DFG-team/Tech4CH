@@ -8,5 +8,8 @@ import atcs.museum.domain.PresentationVisitor;
 
 @Repository
 public interface PointOfInterestVisitorRepository extends CrudRepository<PointOfInterestVisitor,Long>{
+	
+	
+	
 
 }

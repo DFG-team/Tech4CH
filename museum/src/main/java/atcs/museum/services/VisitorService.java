@@ -38,4 +38,6 @@ public class VisitorService {
 	public List<PresentationVisitor> getPres(Long id){
 		return this.visitorRepository.findById(id).get().getVisit().getVisitPresentations();
 	}
+
+	
 }

@@ -22,7 +22,7 @@ import atcs.museum.repository.*;
 
 import org.json.simple.*;
 @Component
-public class DBPopulation /*implements ApplicationRunner*/{
+public class DBPopulation  /*implements ApplicationRunner*/{
 
 	@Autowired
 	private VisitorRepository visitorRepository;
