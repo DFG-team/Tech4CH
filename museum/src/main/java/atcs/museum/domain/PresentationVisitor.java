@@ -37,6 +37,9 @@ public class PresentationVisitor {
 		this.timeOff = t2;
 		this.interruption = interr;
 	}
+	public PresentationVisitor() {
+		
+	}
 
 	public Long getId() {
 		return id;

@@ -55,9 +55,9 @@
 			<div class="row text-center">
 				<div class="col-md-8">
 
-					<h1 class="white-text">Groups</h1>
-					<h5 class="white-text">Scroll down, choose a group and see the
-						visitors in it.</h5>
+					<h1 class="white-text">Visitor Playback and Stats</h1>
+					<h5 class="white-text">Scroll down and see visitor path and
+						stats.</h5>
 
 				</div>
 				<div id="countdown" class="white-text"></div>
@@ -75,12 +75,24 @@
 	<section id="about">
 		<div class="container">
 			<div class="row text-center">
-				<h1 class="black-text">Group's List</h1>
+				<h1 class="black-text">Point Of Interest List</h1>
 				<ul>
-					<li th:each="group:${groups}"><font face="Times New Roman"
-						size="4" color="black"><a th:text="${group.id}"
-							th:href="@{'groupsList' + '/' + 'group' + ${group.id}}">Gruppi
+					<li th:each="poi:${pois}"><font face="Times New Roman"
+						size="4" color="black"><a
+							th:text="${poi.name} + ${poi.timeIn} + ${poi.timeOut}">POI </a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row text-center">
+				<h1 class="black-text">Point Of Interest List</h1>
+				<ul>
+					<li th:each="p:${presentations}"><font face="Times New Roman"
+						size="4" color="black"><a
+							th:text="${p.name} + ${p.timeOn} + ${p.timeOff} + ${p.rate} + ${p.interruption}">POI
 						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+
+
 				</ul>
 			</div>
 		</div>

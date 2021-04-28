@@ -14,6 +14,9 @@ public class Presentation {
 	public Presentation(String description) {
 		this.name = description;
 	}
+	public Presentation() {
+		
+	}
 		
 	public Long getId() {
 		return id;

@@ -19,6 +19,9 @@ public class PointOfInterest {
 	public PointOfInterest(String name) {
 		this.name = name;
 	}
+	public PointOfInterest() {
+		
+	}
 	
 	public Long getId() {
 		return id;

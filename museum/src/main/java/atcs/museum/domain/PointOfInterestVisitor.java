@@ -30,6 +30,10 @@ public class PointOfInterestVisitor {
 		this.timeIn = t1;
 		this.timeOut = t2;
 	}
+	public PointOfInterestVisitor() {
+		
+	}
+	
 
 	public Long getId() {
 		return id;
