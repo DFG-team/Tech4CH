@@ -10,8 +10,8 @@ import atcs.museum.domain.*;
 @Service
 public class PointOfInterestService {
 	
-	public Long getTime(PointOfInterestVisitor poiV) {
-		return ChronoUnit.MINUTES.between(poiV.getTimeOut(), poiV.getTimeIn());
+	public LocalTime getTime(PointOfInterestVisitor poiV) {
+		return poiV.getTimeOut().minusNanos(poiV.getTimeIn().toNanoOfDay());
 	}
 
 }

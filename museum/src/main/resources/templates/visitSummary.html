@@ -79,18 +79,48 @@
 				<ul>
 					<li th:each="poi:${pois}"><font face="Times New Roman"
 						size="4" color="black"><a
-							th:text="${poi.name} + ${poi.timeIn} + ${poi.timeOut}">POI </a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+							th:text="${poi.name} +  ' ' + ${poi.timeIn}+' ' + ${poi.timeOut}">POI
+						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="container">
 			<div class="row text-center">
-				<h1 class="black-text">Point Of Interest List</h1>
+				<h1 class="black-text">Presentation List</h1>
 				<ul>
 					<li th:each="p:${presentations}"><font face="Times New Roman"
 						size="4" color="black"><a
-							th:text="${p.name} + ${p.timeOn} + ${p.timeOff} + ${p.rate} + ${p.interruption}">POI
+							th:text="${p.name} +' '+ ${p.timeOn} +' '+ ${p.timeOff}+' ' + ${p.rate}+' ' + ${p.interruption}">Presentation
+
 						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+
+
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row text-center">
+				<h1 class="black-text">Poi Time spent Stats</h1>
+				<ul>
+					<li th:each="poi_stats:${statsPoi}"><font
+						face="Times New Roman" size="4" color="black"><a
+							th:text="${poi_stats.key.name} +' '+ ${poi_stats.value}">Presentation
+
+						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
+
+
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row text-center">
+				<h1 class="black-text">Presentation Time spent Stats</h1>
+				<ul>
+					<li th:each="p_stats:${statsP}"><font
+						face="Times New Roman" size="4" color="black"><a
+							th:text="${p_stats.key.name} +' '+ ${p_stats.value}">Presentation
+
+						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
 
 
 				</ul>
