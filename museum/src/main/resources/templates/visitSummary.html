@@ -90,7 +90,7 @@
 				<ul>
 					<li th:each="p:${presentations}"><font face="Times New Roman"
 						size="4" color="black"><a
-							th:text="${p.name} +' '+ ${p.timeOn} +' '+ ${p.timeOff}+' ' + ${p.rate}+' ' + ${p.interruption}">Presentation
+							th:text="${p.name} +' START: '+ ${p.timeOn} +' STOP:'+ ${p.timeOff}+' INTERRUPTED BY THE SYSTEM: ' + ${p.interruption}+' RATE:' + ${p.rate}+' IN FRONT AVERAGE GROUP: '+${meanRating.get(p.id)}">Presentation
 
 						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
 
@@ -104,7 +104,7 @@
 				<ul>
 					<li th:each="poi_stats:${statsPoi}"><font
 						face="Times New Roman" size="4" color="black"><a
-							th:text="${poi_stats.key.name} +' '+ ${poi_stats.value}">Presentation
+							th:text="${poi_stats.key.name} +' '+ ${poi_stats.value} +' '+ 'in front of the average of the groups:' + ' ' + ${meanPoi.get(poi_stats.key.id)}">Presentation
 
 						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
 
@@ -118,7 +118,7 @@
 				<ul>
 					<li th:each="p_stats:${statsP}"><font
 						face="Times New Roman" size="4" color="black"><a
-							th:text="${p_stats.key.name} +' '+ ${p_stats.value}">Presentation
+							th:text="${p_stats.key.name} +' '+ ${p_stats.value} +' ' + 'in front of the average of the groups:' + ' ' + ${meanPresentation.get(p_stats.key.id)}">Presentation
 
 						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
 
