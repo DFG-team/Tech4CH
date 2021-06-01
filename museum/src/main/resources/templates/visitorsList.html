@@ -5,13 +5,15 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tech4CH project</title>
-
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html"
+	lang="en">
+	<head>
+	
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Tech4CH project</title>
 
 <!-- WEB FONTS -->
 <link
@@ -31,79 +33,53 @@
 
 </head>
 
+
 <body>
 	<!-- PRELOADER -->
-	<div id="loader-wrapper">
-		<div id="loader">
-			<div class="sk-spinner sk-spinner-cube-grid">
-				<div class="sk-cube"></div>
-				<div class="sk-cube"></div>
-				<div class="sk-cube"></div>
-				<div class="sk-cube"></div>
-				<div class="sk-cube"></div>
-				<div class="sk-cube"></div>
-				<div class="sk-cube"></div>
-				<div class="sk-cube"></div>
-				<div class="sk-cube"></div>
-			</div>
-		</div>
-	</div>
+		<div id="loader-wrapper">
+			<div id="loader"><div class="sk-spinner sk-spinner-cube-grid"><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div></div></div>
+		</div>	
+
 
 	<!-- HEADER -->
-	<section id="header">
-		<div class="container">
-			<div class="row text-center">
-				<div class="col-md-8">
-
-					<h1 class="white-text">Visitors</h1>
-					<h5 class="white-text">Scroll down, choose a group and see the
-						visitors in it.</h5>
-
+		<section id="header">
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-md-8">
+						
+						<center><h1 class="white-text">Visitors List</h1></center>
+						<center><h5 class="white-text">Choose one visitor for see stats</h5></center>
+						
+					</div>
+						<div id="countdown" class="white-text"></div>
+					</div>
 				</div>
-				<div id="countdown" class="white-text"></div>
 			</div>
-		</div>
-		<div class="animation">
-			<a class="arrow-down-animation" data-scroll href="#about"><i
-				class="fa fa-angle-down"></i></a>
-		</div>
-	</section>
+			<div class="animation">
+			<a class="arrow-down-animation" data-scroll href="#about"><i class="fa fa-angle-down"></i></a>
+			</div>
+		</section>
 	<!-- HEADER ENDS -->
 
 	<!-- ABOUT -->
 	<section id="about">
-		<div class="container">
-			<div class="row text-center">
-				<h1 class="black-text">Visitor's List</h1>
+			
+				<center><h1 class="black-text">Visitor's List</h1></center>
+				<table style="width:100%">
 				<ul>
+					<th>
 					<li th:each="visitor:${visitors}"><font face="Times New Roman"
 						size="4" color="black"><a th:text="${visitor.id}"
 							th:href="@{'/visitorsList' + '/' + 'visitor'+${visitor.id}}">Visitors</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-
+</th>
 
 
 				</ul>
-			</div>
-		</div>
+</table>
 	</section>
 	<!-- ABOUT ENDS -->
 
-	<!-- FOOTER -->
-	<footer id="footer">
-		<div class="container">
-			<div class="row text-center">
-				<p>
-					&copy; 2016 Shine | DESIGN BY <a href="http://templatestock.co">Template
-						Stock</a> <span class="social"> <a href="#"><i
-							class="fa fa-facebook-square"></i></a> <a href="#"><i
-							class="fa fa-twitter-square"></i></a> <a href="#"><i
-							class="fa fa-google-plus-square"></i></a>
-					</span>
-				</p>
-			</div>
-		</div>
-	</footer>
-	<!-- FOOTER ENDS -->
+
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
