@@ -139,6 +139,7 @@ public class VisitService {
 	//**INDIVIDUAL**//
 	//Given a Visitor that has done a Visit
 	//It Return a map with key=id of presentation, value=the mean time of a group listening presentation
+	/*
 	public HashMap<PresentationVisitor, LocalTime> getMeanTimePresentationGroup(Visit visit) {
 		HashMap<PresentationVisitor,LocalTime> meanTimePresentation = new HashMap<>(); //a map with key=name of the poi, value=mean time of group in front of POI
 		Visitor v = visit.getVisitor();  //the visitor
@@ -146,15 +147,19 @@ public class VisitService {
 		List<Visitor> vMates = v.getGroup().getVisitors();   //mates of the visitor
 		
 		for(PresentationVisitor p: vPresentation.keySet()) {
-			Long temp = null;
+			LocalTime temp = null;
+			
 			for(Visitor visitor: vMates) {
+				 temp = temp.plusNanos(getStatsPresentationVisitor(visitor.getVisit()).get(p).toNanoOfDay());
+				 
 				//temp =+ getStatsPresentationVisitor(visitor.getVisit()).get(p);
 			}
-			//meanTimePresentation.put(p, temp/(vMates.size()));
+			Duration t = temp 
+			meanTimePresentation.put(p, temp.(vMates.size()));
 		}
 		return meanTimePresentation;
 	}
-
+*/
 	
 	//**INDIVIDUAL**//
 	//Given a Visitor that has done a Visit

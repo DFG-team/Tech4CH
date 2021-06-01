@@ -19,13 +19,15 @@ import org.springframework.stereotype.Component;
 
 import atcs.museum.domain.*;
 import atcs.museum.repository.*;
-
+import atcs.museum.repository.RoomRepository;
 import org.json.simple.*;
 @Component
-public class DBPopulation  /*implements ApplicationRunner*/{
+public class DBPopulation  implements ApplicationRunner{
 
 	@Autowired
 	private VisitorRepository visitorRepository;
+	@Autowired
+	private RoomRepository roomRepository;
 	@Autowired
 	private PointOfInterestRepository poiRepository;
 	@Autowired
@@ -40,10 +42,73 @@ public class DBPopulation  /*implements ApplicationRunner*/{
 	private GroupRepository groupRepository;
 
 
-	/*public void run(ApplicationArguments args) throws Exception {
+	public void run(ApplicationArguments args) throws Exception {
+		this.populateRoom();
 		this.populateDB();
-	}*/
+		
+	}
+	
+	
+	
+	public void populateRoom() throws IOException, InterruptedException {
 
+		
+		JSONParser parser = new JSONParser();
+		try {     
+
+
+			JSONArray roomIterator = (JSONArray) parser.parse(new FileReader("resource/Data/room.json"));
+
+
+			for (Object o : roomIterator) {
+				JSONObject v = (JSONObject) o;
+
+				String room_code = (String) v.get("room_code");
+
+				Room room = new Room();
+                room.setPois(new ArrayList<>());
+                room.setName(room_code);
+                
+				JSONArray pointOfInterestRoom = (JSONArray) v.get("positions");
+				for (Object c : pointOfInterestRoom) {
+
+					JSONObject poi = (JSONObject) c;
+					String name = (String) poi.get("name");
+
+					PointOfInterest poi_object = new PointOfInterest(name);
+                    room.addPoi(poi_object);
+					
+
+				}
+
+				this.roomRepository.save(room);
+				for (Object c : pointOfInterestRoom) {
+
+					JSONObject poi = (JSONObject) c;
+					String name = (String) poi.get("name");
+
+					PointOfInterest poi_object = new PointOfInterest(name);
+					poi_object.setRoom(room);
+                    room.addPoi(poi_object);
+					this.poiRepository.save(poi_object);
+					
+
+				}
+			}
+			
+			
+			
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
 	public void populateDB() throws IOException, InterruptedException {
 
 
@@ -134,10 +199,9 @@ public class DBPopulation  /*implements ApplicationRunner*/{
 					String end_time_poi = (String) poi.get("end_time");
 					LocalTime end_time_VisitorPoi = LocalTime.parse(end_time_poi);
 					System.out.println(end_time_VisitorPoi);
-					PointOfInterest poi_object = new PointOfInterest(name);
+					PointOfInterest poi_object= this.poiRepository.findByName(name);
 					PointOfInterestVisitor poiV = new PointOfInterestVisitor(poi_object, visitor_final.getVisit(), start_time_VisitorPoi, end_time_VisitorPoi);
 					visitor_final.getVisit().addPOI(poiV);
-					this.poiRepository.save(poi_object);
 					this.poiVRepository.save(poiV);
 					//System.out.println(c+"");
 				}

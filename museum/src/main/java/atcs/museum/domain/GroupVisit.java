@@ -8,7 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.Modifying;
 
 @Entity
-@DynamicUpdate
+@DynamicUpdate(true) 
 public class GroupVisit {
 	
 	@Id

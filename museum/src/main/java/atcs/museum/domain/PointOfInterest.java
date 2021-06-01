@@ -13,7 +13,7 @@ public class PointOfInterest {
 	private String name;
 
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Room room;
 	
 	public PointOfInterest(String name) {

@@ -40,21 +40,7 @@ public class VisitorController {
 		
 		model.addAttribute("singleVisitor",v); 
 		model.addAttribute("playbackPois", visitService.getVisitPlayback(v.getVisit()));
-		List<PointOfInterestVisitor> poi = v.getVisit().getVisitPois();
-		
-		
-		
-		for(PointOfInterestVisitor pois: poi ) {
-		    for(PointOfInterestVisitor pois2: poi) {
-		    	
-		       if(pois.getName().toString().equals(pois2.getName().toString())){
-		    	    double_touch++;
-	
-		       }
-		    		   
-		    }
-		}
-model.addAttribute("times_in_stage",double_touch);
+		//List<PointOfInterestVisitor> poi = v.getVisit().getVisitPois();
 		
 		
 		return "visitorPlayback";
