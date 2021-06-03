@@ -11,6 +11,7 @@ import atcs.museum.repository.GroupRepository;
 import atcs.museum.repository.PointOfInterestVisitorRepository;
 import atcs.museum.repository.PresentationVisitorRepository;
 import atcs.museum.repository.VisitorRepository;
+import atcs.museum.services.MuseumStatsService;
 import atcs.museum.services.VisitService;
 import atcs.museum.services.VisitorService;
 
@@ -20,6 +21,10 @@ public class CuratorController {
 	@Autowired
 	private VisitService visitService;
 	@Autowired
+	private VisitorService visitorService;
+	@Autowired
+	private MuseumStatsService museumStatsService;
+	@Autowired
 	private VisitorRepository visitorRepository;
 	@Autowired
 	private GroupRepository groupRepository;
@@ -27,13 +32,11 @@ public class CuratorController {
 	private PointOfInterestVisitorRepository poiRepository;
 	@Autowired
 	private PresentationVisitorRepository pRepository;
-	@Autowired
-	private VisitorService visitorService;
 	
 	
 	@RequestMapping("/")
 	public String home() {
-	return "homePage";
+	return "index";
 	}
     
 	@RequestMapping("/curatorPanel")
@@ -61,12 +64,14 @@ public class CuratorController {
 		model.addAttribute("visitor", v);
 		model.addAttribute("pois", this.visitorService.getPois(idV));
 		model.addAttribute("presentations", this.visitorService.getPres(idV));
+		model.addAttribute("namePois", this.visitService.getNamePois());
+		model.addAttribute("namePres", this.visitService.getNamePres());
 		
 		//STATS
 		model.addAttribute("statsPoi", this.visitService.getStatsPoiVisitor(v.getVisit()));
 		model.addAttribute("statsP", this.visitService.getStatsPresentationVisitor(v.getVisit()));
 		
-	    //GROUP MEAN
+	    //GROUP AVERAGE
 		model.addAttribute("meanPoi", this.visitService.getMeanTimePoiGroup(v.getVisit()));
 		model.addAttribute("meanPresentation", this.visitService.getMeanTimePresentationGroup(v.getVisit()));
 		model.addAttribute("meanRating", this.visitService.getMeanRatingGroup(v.getVisit()));
@@ -78,7 +83,11 @@ public class CuratorController {
 	//Html page about statistic for all visit
 	@RequestMapping("/museumStatistic")
 	public String museumStatistic(Model model) {
-		model.addAttribute("visit", this.visitService.getAllVisit());
+		model.addAttribute("perHour", this.museumStatsService.getVisitorsPerHour());
+		model.addAttribute("perRoomPerHour", this.museumStatsService.getVisitorsPerRoomPerHour());
+		model.addAttribute("attractionPower", this.museumStatsService.attractionPowerStats());
+		model.addAttribute("holdingPower", this.museumStatsService.holdingPowerStats());
+		model.addAttribute("namePois", this.visitService.getNamePois());
 		return "museumStatistic";
 	
 	}

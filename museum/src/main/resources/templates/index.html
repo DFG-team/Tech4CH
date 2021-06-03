@@ -1,182 +1,125 @@
 <!DOCTYPE html>
 <!--
-	Shine by TEMPLATE STOCK
-	templatestock.co @templatestock
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+Template Name: Wavefire
+Author: <a href="https://www.os-templates.com/">OS Templates</a>
+Author URI: https://www.os-templates.com/
+Copyright: OS-Templates.com
+Licence: Free to use under our free template licence terms
+Licence URI: https://www.os-templates.com/template-terms
 -->
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Tech4CH project</title>
-
-		
-		<!-- WEB FONTS -->
-		<link href='http://fonts.googleapis.com/css?family=Roboto:100,300,100italic,400,300italic' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-		
-		<!-- BOOTSTRAP -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<!-- FONT AWESOME -->
-		<link rel="stylesheet" href="css/font-awesome.min.css">
-		<!-- CUSTOM STYLING -->
-		<link href="css/styles.css" rel="stylesheet">
-		<!-- PRELOADER -->	
-		<link href="css/loader.css" rel="stylesheet">
-			
-	</head>
-	
-<body>
-	<!-- PRELOADER -->
-		<div id="loader-wrapper">
-			<div id="loader"><div class="sk-spinner sk-spinner-cube-grid"><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div><div class="sk-cube"></div></div></div>
-		</div>	
-		
-	<!-- HEADER -->
-		<section id="header">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-8">
-						
-						<h1 class="white-text">Welcome on our Museum </h1>
-						<h5 class="white-text">Lorem ipsum dolor sit amet, ed do eiusmod tempor incididunt.</h5>
-						<p>Clicca qui sotto per visualizzare il path dell'utente</p>
-						<a th:href="@{/userStats}" class="button fit">Go</a>
-					</div>
-						<div id="countdown" class="white-text"></div>
-					</div>
-				</div>
+<html lang="" xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>TECH4CH</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css"
+	media="all">
+</head>
+<body id="top">
+	<!-- ################################################################################################ -->
+	<!-- ################################################################################################ -->
+	<!-- ################################################################################################ -->
+	<div class="wrapper row0">
+		<header id="header" class="hoc clear">
+			<!-- ################################################################################################ -->
+			<div id="logo" class="one_quarter first">
+				<h1>
+					<a href="index.html"><span>w</span>ave<span>f</span>ire</a>
+				</h1>
 			</div>
-			<div class="animation">
-			<a class="arrow-down-animation" data-scroll href="#about"><i class="fa fa-angle-down"></i></a>
-			</div>
-		</section>
-	<!-- HEADER ENDS -->
-		
-	<!-- ABOUT -->
-		<section id="about">
-			<div class="container">
-				<div class="row text-center">
-					<!-- Section 1 -->
-					<div data-sr="enter top over 1s, wait 0.3s, move 24px, reset" class="col-md-4">
-						<i class="fa fa-laptop"></i>
-						<h3>Visit Summary</h3>
-						<div class="colored-line-small-center"></div>
-						<p>Go there for see the summary of your visit</p>
-						<a th:href="@{/visitSummary}" class="button fit">Go</a>
-					</div>
-					<!-- Section 2 -->
-					<div data-sr="enter bottom over 1s, wait 0.3s, move 24px, reset" class="col-md-4 middle">
-						<i class="fa fa-lightbulb-o"></i>
-						<h3>Play Back your visit or your group visit</h3>
-						<div class="colored-line-small-center"></div>						
-						<p>See how you moved around in the Museum between exhibits and check if it is possibile speed up the visit.</p>	
-						<a th:href="@{/playbackVisit}" class="button fit">Go</a>					
-					</div>
-					<!-- Section 3 -->
-					<div data-sr="enter top over 1s, wait 0.3s, move 24px, reset" class="col-md-4">
-						<i class="fa fa-newspaper-o"></i>
-						<h3>Museum Statistic</h3>
-						<div class="colored-line-small-center"></div>
-						<p>Analysis of our Museum</p>	
-						<a th:href="@{/museumStatistic}" class="button fit">Go</a>					
-					</div>
-				</div>
-			</div>			
-		</section>
-	<!-- ABOUT ENDS -->
-	
-	<!-- SUBSCRIBE -->
-		<section id="subscribe">
-			<div class="container">
-				<i data-sr="ease-in over 1s, reset" class="fa fa-envelope icontop"></i>
-				<div class="row text-center">
-					<div class="col-md-8 col-md-offset-2">
-						<h2 data-sr="enter top over 1s, wait 0.3s, move 24px, reset" class="white-text">Sign up to our Newsletter</h2>
-						<h5 data-sr="enter bottom over 1s, wait 0.3s, move 24px, reset" class="white-text">Stay up2date with climb-up</h5>
-						<!-- MAILCHIMP FORM -->
-						<form id="mc_form" role="form">
-							<input data-sr="enter top over 1s, wait 0.3s, move 24px, reset" type="email" class="form-control" id="mc-email" name="mc-email" placeholder="Your Email" />
-							<button data-sr="enter bottom over 1s, wait 0.3s, move 24px, reset" type="submit" class="button-leweb">Submit</button>
-							<label for="mc-email" class="mc-email"></label>
-						</form>
-						<!-- MAILCHIMP FORM ENDS -->
-					</div>
-				</div>
-			</div>	
-		</section>
-	<!-- SUBSCRIBE ENDS -->
-	
-	<!-- CONTACT US -->
-		<section id="contact">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-8 col-md-offset-2">
-						<!-- CONTACT FORM -->
-						<form method="post" action="">
-							<p data-sr="enter top over 1s, wait 0.3s, move 24px, reset" class="contact-info text-center">Get in Contact. Fill up the form below. All fields are required.</p>
-							<div data-sr="enter left over 1s, wait 0.3s, move 24px, reset" class="form-group col-md-6">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Your Name" />
-							</div>
-							<div data-sr="enter right over 1s, wait 0.3s, move 24px, reset" class="form-group col-md-6">
-								<input type="email" class="form-control" id="email" name="email" placeholder="Your Email" />
-							</div>
-							<div data-sr="enter bottom over 1s, wait 0.3s, move 24px, reset" class="form-group col-md-12">
-								<input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" />
-							</div>
-							<div data-sr="enter bottom over 1s, wait 0.3s, move 24px, reset" class="form-group col-md-12">
-								<textarea cols="60" rows="3" id="comment" name="comment" class="form-control" placeholder="Write your comment here..."></textarea>
-							</div>
-							<div data-sr="enter bottom over 1s, wait 0.3s, move 24px, reset" class="form-group col-sm-12 ">
-								<button type="submit" class="button-leweb">Send Message</button>
-							</div>
-						</form>
-									
-						<!-- AFTER SENDING MESSAGE -->
-						<div id="success" class="col-md-12 col-sm-12 text-center">
-							<i class="fa fa-check-circle"></i>
-							<strong>Message successfully sent</strong>
-							<p>Thanks for contacting us. We will respond to you as soon as possible!</p>
-						</div>									
-						<!-- CONTACT FORM ENDS -->	
-					</div>				
-				</div>
-			</div>
-		</section>
-	<!-- CONTACT ENDS -->
-	
-	<!-- FOOTER -->
-		<footer id="footer">
-			<div class="container">
-				<div class="row text-center">	
-					<p>
-						&copy; 2016 Shine | DESIGN BY <a href="http://templatestock.co">Template Stock</a>
-						<span class="social">
-							<a href="#"><i class="fa fa-facebook-square"></i></a>
-							<a href="#"><i class="fa fa-twitter-square"></i></a> 
-							<a href="#"><i class="fa fa-google-plus-square"></i></a>
-						</span>
-					</p>
-				</div>
-			</div>		
-		</footer>
-	<!-- FOOTER ENDS -->	
+			<div class="three_quarter">
+				<ul class="nospace clear">
 
-	
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/bootstrap.min.js"></script>
-		<!-- SMOOTH SCROLL -->
-		<script src="js/smooth-scroll.min.js"></script>
-		<!-- PARALLAX IMG -->
-		<script src="js/jquery.parallax-1.1.3.js"></script>
-		<!-- SCROLL REVEAL -->
-		<script src="js/scrollReveal.min.js"></script>
-		<!-- FUNCTIONS -->
-		<script src="js/functions.js"></script>
-
+					<li class="one_third">
+						<div class="block clear">
+							<a href="#"><i class="fas fa-envelope"></i></a> <span><strong>Developers:</strong>
+								fra.foresi@stud.uniroma3.it pie.delellis@stud.uniroma3.it
+								and.giorgi4@stud.uniroma3.it</span>
+						</div>
+					</li>
+					<li class="one_third">
+						<div class="block clear">
+							<a href="#"><i class="fas fa-clock"></i></a> <span><strong>
+									Course</strong> Advanced Topics in Computer Science: Tech4CH Roma Tre –
+								Spring 2020 </span>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!-- ################################################################################################ -->
+		</header>
+	</div>
+	<!-- ################################################################################################ -->
+	<!-- ################################################################################################ -->
+	<!-- ################################################################################################ -->
+	<div class="wrapper row1">
+		<section class="hoc clear">
+			<!-- ################################################################################################ -->
+			<nav id="mainav">
+				<ul class="clear">
+					<li class="active"><a th:href="@{/}">Home</a></li>
+					<li><a class="drop" th:href="@{/curatorPanel}">Curator</a>
+						<ul>
+							<li><a th:href="@{/groupsList}">visitor/group statistics</a></li>
+							<li><a th:href="@{/museumStatistic}">museum statistics</a></li>
+						</ul></li>
+					<li><a class="drop" th:href="@{/visitorPanel}">User</a>
+						<ul>
+							<li><a th:href="@{/visitorPanel}">visit playback</a></li>
+							<li><a href="#">how to use</a></li></li>
+			</nav>
+			<!-- ################################################################################################ -->
+		</section>
+	</div>
+	<!-- ################################################################################################ -->
+	<!-- ################################################################################################ -->
+	<!-- ################################################################################################ -->
+	<div class="wrapper bgded overlay"
+		style="background-image: url('images/demo/backgrounds/01.png');">
+		<div id="pageintro" class="hoc clear">
+			<!-- ################################################################################################ -->
+			<article>
+				<p>Welcome in Tech4CH websites</p>
+				<h3 class="heading"></h3>
+				<p>Scroll down to choose actions, or click the button and read
+					our user guide</p>
+				<footer>
+					<a class="btn" href="#">How to use the site <i
+						class="fas fa-angle-right"></i></a>
+				</footer>
+			</article>
+			<!-- ################################################################################################ -->
+		</div>
+	</div>
+	<!-- ################################################################################################ -->
+	<!-- ################################################################################################ -->
+	<!-- ################################################################################################ -->
+	<div class="wrapper row3">
+		<main class="hoc container clear">
+			<!-- main body -->
+			<!-- ################################################################################################ -->
+			<div class="sectiontitle">
+				<h6 class="heading">Are you a visitor or a curator?</h6>
+			</div>
+			<div class="group center btmspace-80">
+				<article class="one_third first">
+					<a class="ringcon btmspace-50" th:href="@{/visitorPanel}"><i
+						class="fas fa-cube"></i></a>
+					<h6 class="heading">Visitor</h6>
+				</article>
+				<article class="one_third">
+					<a class="ringcon btmspace-50" th:href="@{/curatorPanel}"><i
+						class="fas fa-chart-pie"></i></a>
+					<h6 class="heading">Curator</h6>
+				</article>
+				<article class="one_third">
+					<a class="ringcon btmspace-50" href="#"><i
+						class="fas fa-paw"></i></a>
+					<h6 class="heading">How to use the site</h6>
+				</article>
+			</div>
 </body>
 </html>

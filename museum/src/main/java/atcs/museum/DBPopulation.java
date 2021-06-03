@@ -45,14 +45,14 @@ public class DBPopulation  implements ApplicationRunner{
 	public void run(ApplicationArguments args) throws Exception {
 		this.populateRoom();
 		this.populateDB();
-		
+
 	}
-	
-	
-	
+
+
+
 	public void populateRoom() throws IOException, InterruptedException {
 
-		
+
 		JSONParser parser = new JSONParser();
 		try {     
 
@@ -66,9 +66,9 @@ public class DBPopulation  implements ApplicationRunner{
 				String room_code = (String) v.get("room_code");
 
 				Room room = new Room();
-                room.setPois(new ArrayList<>());
-                room.setName(room_code);
-                
+				room.setPois(new ArrayList<>());
+				room.setName(room_code);
+
 				JSONArray pointOfInterestRoom = (JSONArray) v.get("positions");
 				for (Object c : pointOfInterestRoom) {
 
@@ -76,8 +76,8 @@ public class DBPopulation  implements ApplicationRunner{
 					String name = (String) poi.get("name");
 
 					PointOfInterest poi_object = new PointOfInterest(name);
-                    room.addPoi(poi_object);
-					
+					room.addPoi(poi_object);
+
 
 				}
 
@@ -89,15 +89,15 @@ public class DBPopulation  implements ApplicationRunner{
 
 					PointOfInterest poi_object = new PointOfInterest(name);
 					poi_object.setRoom(room);
-                    room.addPoi(poi_object);
+					room.addPoi(poi_object);
 					this.poiRepository.save(poi_object);
-					
+
 
 				}
 			}
-			
-			
-			
+
+
+
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -108,7 +108,7 @@ public class DBPopulation  implements ApplicationRunner{
 		}
 	}
 
-	
+
 	public void populateDB() throws IOException, InterruptedException {
 
 
@@ -157,7 +157,7 @@ public class DBPopulation  implements ApplicationRunner{
 				this.visitRepository.save(visit);
 				visit.setVisitor(visitor_final);
 
-				
+
 				if(group_id!=temp_group_id || temp_group_id == null) {
 					temp_group_id = group_id;
 					List<Visitor> visitors = new ArrayList<>();
@@ -237,11 +237,19 @@ public class DBPopulation  implements ApplicationRunner{
 
 					//System.out.println(visitor_final.getGroup().getSize());
 
-					Presentation presentation_object = new Presentation(name);
-					PresentationVisitor pV = new PresentationVisitor(presentation_object, visitor_final.getVisit(), rate_int, start_time_VisitorPres, end_time_VisitorPres, bol);
-					visitor_final.getVisit().addPresentation(pV);
-					this.pRepository.save(presentation_object);
-					this.pVRepository.save(pV);
+					if(this.pRepository.findByName(name) == null) {
+						Presentation presentation_object = new Presentation(name);
+						this.pRepository.save(presentation_object);
+						PresentationVisitor pV = new PresentationVisitor(presentation_object, visitor_final.getVisit(), rate_int, start_time_VisitorPres, end_time_VisitorPres, bol);
+						visitor_final.getVisit().addPresentation(pV);
+						this.pVRepository.save(pV);
+					}
+					else {
+						Presentation presentation_object = this.pRepository.findByName(name);
+						PresentationVisitor pV = new PresentationVisitor(presentation_object, visitor_final.getVisit(), rate_int, start_time_VisitorPres, end_time_VisitorPres, bol);
+						visitor_final.getVisit().addPresentation(pV);
+						this.pVRepository.save(pV);
+					}
 					//System.out.println(c+"");
 				}
 				/*System.out.println("\n" + visitor_final.getVisit().getVisitPois().toString());
@@ -251,15 +259,15 @@ public class DBPopulation  implements ApplicationRunner{
 						System.out.println("\n" + v_print.getId());
 					}
 				}*/
-				
+
 				for(GroupVisit gv: this.groupRepository.findAll()) {
 					System.out.println("\nNew group:"+ gv.getId() + "size:" + gv.getVisitors().size());
 					for(Visitor v_print: gv.getVisitors()) {
 						System.out.println("\nVisitor:"+ v_print.getId());
 					}
 				}
-				
-				
+
+
 			}
 			//for(GroupVisit gv:this.groupRepository.findAll()) {
 			//	gv.setSize(gv.getVisitors().size());

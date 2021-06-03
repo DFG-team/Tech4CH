@@ -8,6 +8,6 @@ import atcs.museum.domain.PresentationVisitor;
 
 @Repository
 public interface PresentationRepository extends CrudRepository<Presentation,Long>{
-
+	public Presentation findByName(String name);
 
 }
