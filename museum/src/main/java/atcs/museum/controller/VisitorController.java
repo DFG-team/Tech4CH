@@ -47,5 +47,4 @@ public class VisitorController {
 		return "visitorPlayback";
 	}
 
-
 }

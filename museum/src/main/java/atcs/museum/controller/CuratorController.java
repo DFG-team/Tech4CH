@@ -38,6 +38,11 @@ public class CuratorController {
 	public String home() {
 	return "index";
 	}
+	
+	@RequestMapping("/userGuide")
+	public String userGuide() {
+		return "userGuide";
+	}
     
 	@RequestMapping("/curatorPanel")
 	public String curatorPanel() {
