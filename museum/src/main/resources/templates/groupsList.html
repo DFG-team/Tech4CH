@@ -100,8 +100,7 @@ Licence URI: https://www.os-templates.com/template-terms
 							</tr>
 						</thead>
 						<tr th:each="group:${groups}">
-							<td><a th:text="${group.id}"></a><a>&nbsp&nbsp&nbsp&nbsp</a>
-							  <a th:href="@{'groupsList' + '/' + 'group' + ${group.id}}" class="fas fa-play"></a></td>
+							<td><a th:href="@{'groupsList' + '/' + 'group' + ${group.id}}"><button th:text="${group.id}">Click here</button></a></td>
 					</table>
 				</div>
 			</div>

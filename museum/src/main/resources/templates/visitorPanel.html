@@ -99,9 +99,7 @@ Licence URI: https://www.os-templates.com/template-terms
 				</tr>
 				</thead>
 					<tr th:each="visitor:${visitors}">
-						<td><a th:text="${visitor.id}"></a><a>&nbsp&nbsp&nbsp</a><a
-							th:href="@{'visitorPlayback' + '/' + 'visitor' + ${visitor.id}}"
-							class="fas fa-play"></a></td>
+						<td><a th:href="@{'visitorPlayback' + '/' + 'visitor' + ${visitor.id}}"><button th:text="${visitor.id}"></button></a></td>
 					</tr>
 
 
