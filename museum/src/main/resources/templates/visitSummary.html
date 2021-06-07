@@ -27,7 +27,7 @@ Licence URI: https://www.os-templates.com/template-terms
 			<!-- ################################################################################################ -->
 			<div id="museum" class="one_quarter first">
 				<h1>
-					<img src= "../images/demo/logo.png" th:href="@{/}">
+					<img src="../images/demo/logo.png" th:href="@{/}">
 				</h1>
 			</div>
 			<div class="three_quarter">
@@ -79,6 +79,7 @@ Licence URI: https://www.os-templates.com/template-terms
 				<li><a th:href="@{/}">Home</a></li>
 				<li><a th:href="@{/curatorPanel}">Curator Panel</a></li>
 				<li><a th:href="@{/groupsList}">Group List</a></li>
+				<li><a>Visitor's List</a></li>
 				<li><a>Visit Summary</a></li>
 			</ul>
 			<!-- ################################################################################################ -->
@@ -91,64 +92,94 @@ Licence URI: https://www.os-templates.com/template-terms
 		<main class="hoc container clear">
 			<!-- main body -->
 			<!-- ################################################################################################ -->
-			
-				<div class="container">
-			<div class="row text-center">
-					<h1 class="black-text">Point Of Interest Visited by the visitor</h1>
-				<ul>
 
-					<li th:each="poi:${pois}">
-						<font face="Times New Roman" size="4" color="black"><a
-							th:text="${poi.name}">A&nbsp&nbsp</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a
-							th:text="' || Start time' +  ' ' + ${poi.timeIn}">B&nbsp&nbsp</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a
-							th:text="' || End time' + ' ' + ${poi.timeOut}">POI&nbsp&nbsp </a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					</li>
+			<div class="container">
+				<div class="row text-center">
+					<h1 class="black-text">Point Of Interest Visited by the
+						visitor</h1>
+					<table>
+						<thead>
+							<tr>
+								<td><a class="fas fa-map-marker"></a>  POI name</td>
+								<td><a class="fas fa-clock"></a>  Time in</td>
+								<td><a class="fas fa-clock"></a>  Time out</td>
+							</tr>
+						</thead>
 
-				</ul>
+						<tr th:each="poi:${pois}">
+							<td th:text="${poi.name}"></td>
+							<td th:text="${poi.timeIn}"></td>
+							<td th:text="${poi.timeOut}"></td>
+						</tr>
+					</table>
+				</div>
 			</div>
-		</div>
-		<div class="container">
-			<div class="row text-center">
-				<h1 class="black-text">Presentation Played by the visitor</h1>
-				<ul>
-					<li th:each="p:${presentations}"><font face="Times New Roman"
-						size="4" color="black"><a
-							th:text="${p.name} +' || Start time: '+ ${p.timeOn} +' || Stop time:'+ ${p.timeOff}+' || Interrupted by the system: ' + ${p.interruption}+' || Rate: ' + ${p.rate}+' || in front of the group average: '+${meanRating.get(p.id)}">Presentation
+			<div class="container">
+				<div class="row text-center">
+					<h1 class="black-text">Presentation Played by the visitor</h1>
+					<table>
+						<thead>
+							<tr>
+								<td><a class="fas fa-music"></a>  Presentation name</td>
+								<td><a class="fas fa-clock"></a>  Time On</td>
+								<td><a class="fas fa-clock"></a>  Time Off</td>
+								<td><a class="fas fa-ban"></a>  Interrupted by System</td>
+							</tr>
+						</thead>
+						<tr th:each="p:${presentations}">
+							<td th:text="${p.name}"></td>
+							<td th:text="${p.timeOn}"></td>
+							<td th:text="${p.timeOff}"></td>
+							<td th:text="${p.interruption}"></td>
 
-						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
-
-
-				</ul>
+						</tr>
+					</table>
+				</div>
 			</div>
-		</div>
-		<div class="container">
-			<div class="row text-center">
-				<h1 class="black-text">Point of interest time spent statistics</h1>
-				<ul>
-					<li th:each="poi_stats:${statsPoi}"><font
-						face="Times New Roman" size="4" color="black"><a
-							th:text="${namePois.get(poi_stats.key)} +' || Total time spent in the POI: '+ ${poi_stats.value} +' || '+ 'in front of the average of the groups:' + ' ' + ${meanPoi.get(poi_stats.key)}">Presentation
+			<div class="container">
+				<div class="row text-center">
+					<h1 class="black-text">Point of interest time spent statistics</h1>
+					<table>
+						<thead>
+							<tr>
+								<td><a class="fas fa-map-marker"></a>  POI name</td>
+								<td><a class="fas fa-clock"></a>  Total time spent in front of</td>
+								<td><a class="fas fa-clock"></a>  Group Average time spent in front of</td>
+							</tr>
+						</thead>
+						<tr th:each="poi_stats:${statsPoi}">
+							<td th:text="${namePois.get(poi_stats.key)}"></td>
+							<td th:text="${poi_stats.value}"></td>
+							<td th:text="${meanPoi.get(poi_stats.key)}"></td>
+						</tr>
 
-						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
 
-
-				</ul>
+					</table>
+				</div>
 			</div>
-		</div>
-		<div class="container">
-			<div class="row text-center">
-				<h1 class="black-text">Presentation Time spent Statistics</h1>
-				<ul>
-					<li th:each="p_stats:${statsP}"><font face="Times New Roman"
-						size="4" color="black"><a
-							th:text="${namePres.get(p_stats.key)} +' ||Total time spent listening the presentation: '+ ${p_stats.value} +' || ' + 'in front of the average of the groups:' + ' ' + ${meanPresentation.get(p_stats.key)}">Presentation
-
-						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-
-
-				</ul>
+			<div class="container">
+				<div class="row text-center">
+					<h1 class="black-text">Presentation Statistics</h1>
+					<table>
+						<thead>
+							<tr>
+								<td><a class="fas fa-music"></a>  Presentation name</td>
+								<td><a class="fas fa-clock"></a>  Total listening time</td>
+								<td><a class="fas fa-clock"></a>  Group Average listening time</td>
+								<td><a class="fas fa-star-half"></a>  Rate</td>
+								<td><a class="fas fa-star"></a>  Group Average Rate</td>
+							</tr>
+						</thead>
+						<tr th:each="p_stats:${statsP}">
+							<td th:text="${namePres.get(p_stats.key)}"></td>
+							<td th:text="${p_stats.value}"></td>
+							<td th:text="${meanPresentation.get(p_stats.key)}">
+							<td th:text="${statsRating.get(p_stats.key)}"></td>
+							<td th:text="${meanRating.get(p_stats.key)}"></td>
+						</tr>
+					</table>
+				</div>
 			</div>
-		</div>
 		</main>
 	</div>
 </body>

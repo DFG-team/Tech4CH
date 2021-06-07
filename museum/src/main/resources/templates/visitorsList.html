@@ -27,7 +27,7 @@ Licence URI: https://www.os-templates.com/template-terms
 			<!-- ################################################################################################ -->
 			<div id="museum" class="one_quarter first">
 				<h1>
-					<img src= "../images/demo/logo.png" th:href="@{/}">
+					<img src="../images/demo/logo.png" th:href="@{/}">
 				</h1>
 			</div>
 			<div class="three_quarter">
@@ -91,18 +91,21 @@ Licence URI: https://www.os-templates.com/template-terms
 		<main class="hoc container clear">
 			<!-- main body -->
 			<!-- ################################################################################################ -->
-		
-				<h1 class="black-text">Choose a visitor id to see the playback</h1>
-			
-			<table style="width: 100%">
-					<th>
-						<li th:each="visitor:${visitors}"><font
-							face="Times New Roman" size="4" color="black"><a
-								th:text="${visitor.id}"
-								th:href="@{'/visitorsList' + '/' + 'visitor'+${visitor.id}}">Visitors</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-					</th>
 
-				</table>
+			<h1 class="black-text">Choose a visitor id to see the playback</h1>
+
+			<table style="width: 100%">
+				<thead>
+					<tr>
+						<td><a class="fas fa-user"></a>  Member of Group ID</td>
+					</tr>
+				</thead>
+				<tr th:each="visitor:${visitors}">
+					<td><a th:text="${visitor.id}"></a><a>&nbsp&nbsp&nbsp</a><a th:href="@{'/visitorsList' + '/' + 'visitor'+${visitor.id}}" class="fas fa-play"></a></td>
+					<td	></td>
+				</tr>
+
+			</table>
 		</main>
 	</div>
 </body>

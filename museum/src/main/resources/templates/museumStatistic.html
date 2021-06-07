@@ -95,11 +95,15 @@ Licence URI: https://www.os-templates.com/template-terms
 				<div class="row text-center">
 					<h1 class="black-text">Visitor Per Hour</h1>
 					<table>
+						<thead>
+							<tr>
+								<td><a class="fas fa-clock"></a>  Hour</td>
+								<td><a class="fas fa-hashtag"></a>   of Visitors</td>
+							</tr>
+						</thead>
 						<tr th:each="stat:${perHour}">
-							<td
-								th:text="'Hour: ' + ${stat.key} +  ' Number of Visitors: ' + ${stat.value}">PERHOUR
-								</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-							</td>
+							<td th:text="${stat.key}"></td>
+							<td th:text="${stat.value}"></td>
 						</tr>
 					</table>
 				</div>
@@ -110,11 +114,17 @@ Licence URI: https://www.os-templates.com/template-terms
 					<ul>
 						<li th:each="stat:${perRoomPerHour}"><font
 							face="Times New Roman" size="4" color="black"><a
-								th:text="'ROOM: ' + ${stat.key.name}">keyValue </a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+								th:text="'ROOM: ' + ${stat.key.name}">keyValue </a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 							<table>
+								<thead>
+									<tr>
+										<td><a class="fas fa-clock"></a>  Hour</td>
+										<td><a class="fas fa-hashtag"></a>   of Visitors</td>
+									</tr>
+								</thead>
 								<tr th:each="instance:${perRoomPerHour.get(stat.key)}">
-									<td
-										th:text="'Hour: ' + ${instance.key} + ' Number of Visitors: ' + ${instance.value}">P</td>
+									<td th:text="${instance.key}"></td>
+									<td th:text="${instance.value}"></td>
 							</table></li>
 
 
@@ -125,29 +135,41 @@ Licence URI: https://www.os-templates.com/template-terms
 			<div class="container">
 				<div class="row text-center">
 					<h1 class="black-text">Attraction Power POIs</h1>
-					<ul>
-						<li th:each="stat:${attractionPower}"><font
-							face="Times New Roman" size="4" color="black"><a
-								th:text="'The POI ' + ${namePois.get(stat.key)} + ' was visited by the '+ ${stat.value} + '% of the visitors'">keyValue
-							</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+					<table>
+						<thead>
+							<tr>
+								<td><a class="fas fa-map-marker"></a>  POI name</td>
+								<td><a class="fas fa-percent"></a>  of total Visitors</td>
+							</tr>
+						</thead>
+						<tr th:each="stat:${attractionPower}">
+							<td th:text="${namePois.get(stat.key)}"></td>
+							<td th:text="${stat.value}"></td>
+						</tr>
 
 
 
-					</ul>
+					</table>
 				</div>
 			</div>
 			<div class="container">
 				<div class="row text-center">
 					<h1 class="black-text">Holding Power POIs</h1>
-					<ul>
-						<li th:each="stat:${holdingPower}"><font
-							face="Times New Roman" size="4" color="black"><a
-								th:text="'In front of the POI ' + ${namePois.get(stat.key)} + ' all the visitors spent complessively: '+ ${stat.value}">keyValue
-							</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+					<table>
+					<thead>
+							<tr>
+								<td><a class="fas fa-map-marker"></a>  POI name</td>
+								<td><a class="fas fa-clock"></a>  total time all visitors spent in front of</td>
+							</tr>
+						</thead>
+						<tr th:each="stat:${holdingPower}">
+							<td th:text="${namePois.get(stat.key)}"></td>
+							<td th:text="${stat.value}"></td>
+						</tr>
 
 
 
-					</ul>
+					</table>
 				</div>
 			</div>
 		</main>

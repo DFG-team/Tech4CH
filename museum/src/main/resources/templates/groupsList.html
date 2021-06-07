@@ -27,7 +27,7 @@ Licence URI: https://www.os-templates.com/template-terms
 			<!-- ################################################################################################ -->
 			<div id="museum" class="one_quarter first">
 				<h1>
-					<img src= "../images/demo/logo.png" th:href="@{/}">
+					<img src="../images/demo/logo.png" th:href="@{/}">
 				</h1>
 			</div>
 			<div class="three_quarter">
@@ -90,17 +90,21 @@ Licence URI: https://www.os-templates.com/template-terms
 		<main class="hoc container clear">
 			<!-- main body -->
 			<!-- ################################################################################################ -->
-				<div class="container">
-			<div class="row text-center">
-				<h1 class="black-text">Choose a group id to playback</h1>
-				<ul>
-					<li th:each="group:${groups}"><font face="Times New Roman"
-						size="4" color="black"><a th:text="${group.id}"
-							th:href="@{'groupsList' + '/' + 'group' + ${group.id}}">Gruppi
-						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
-				</ul>
+			<div class="container">
+				<div class="row text-center">
+					<h1 class="black-text">Choose a group id to playback</h1>
+					<table>
+						<thead>
+							<tr>
+								<td><a class="fas fa-users"></a>  Group ID</td>
+							</tr>
+						</thead>
+						<tr th:each="group:${groups}">
+							<td><a th:text="${group.id}"></a><a>&nbsp&nbsp&nbsp&nbsp</a>
+							  <a th:href="@{'groupsList' + '/' + 'group' + ${group.id}}" class="fas fa-play"></a></td>
+					</table>
+				</div>
 			</div>
-		</div>
 		</main>
 	</div>
 </body>

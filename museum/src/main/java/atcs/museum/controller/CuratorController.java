@@ -70,6 +70,8 @@ public class CuratorController {
 		//STATS
 		model.addAttribute("statsPoi", this.visitService.getStatsPoiVisitor(v.getVisit()));
 		model.addAttribute("statsP", this.visitService.getStatsPresentationVisitor(v.getVisit()));
+		model.addAttribute("statsRating", this.visitService.getStatsRatingVisitor(v.getVisit()));
+		model.addAttribute("statsInterruption", this.visitService.getStatsInterruptionPresentation(v.getVisit()));
 		
 	    //GROUP AVERAGE
 		model.addAttribute("meanPoi", this.visitService.getMeanTimePoiGroup(v.getVisit()));

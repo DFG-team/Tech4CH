@@ -92,16 +92,21 @@ Licence URI: https://www.os-templates.com/template-terms
 			<div class="row text-center">
 				<h1 class="black-text">Choose your id so you can see your visit
 					playback</h1>
-				<ul>
-					<li th:each="visitor:${visitors}"><font face="Times New Roman"
-						size="4" color="black"><a
+				<table>
+				<thead>
+				<tr>
+				<td><a class="fas fa-user"></a>  Visitor Id</td>
+				</tr>
+				</thead>
+					<tr th:each="visitor:${visitors}">
+						<td><a th:text="${visitor.id}"></a><a>&nbsp&nbsp&nbsp</a><a
 							th:href="@{'visitorPlayback' + '/' + 'visitor' + ${visitor.id}}"
-							th:text="${visitor.id}">titolo Piervy</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-					</li>
+							class="fas fa-play"></a></td>
+					</tr>
 
 
 
-				</ul>
+				</table>
 			</div>
 		</div>
 	</div>

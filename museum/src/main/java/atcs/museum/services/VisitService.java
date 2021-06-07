@@ -141,12 +141,18 @@ public class VisitService {
 	//**INDIVIDUAL**//
 	//Given a Visitor that has done a visit
 	//It return a map with key=id of presentation played by visitor, value=rate given by visitor
-	public HashMap<PresentationVisitor, Integer> getStatsRatingVisitor(Visit visit){
+	public HashMap<Long, Integer> getStatsRatingVisitor(Visit visit){
 		List<PresentationVisitor> presentationVisitor = visit.getVisitPresentations();
-		HashMap<PresentationVisitor, Integer> pRating = new HashMap<>();
+		HashMap<Long, Integer> pRating = new HashMap<>();
 
 		for(PresentationVisitor pV: presentationVisitor) {
-			pRating.put(pV, pV.getRate());
+			if(pRating.containsKey(pV.getPresentation().getId())) {
+				int temp = pRating.get(pV.getPresentation().getId());
+				pRating.put(pV.getPresentation().getId(), (pV.getRate() + temp)/2);
+			}
+			else {
+				pRating.put(pV.getPresentation().getId(), pV.getRate());
+			}
 		}
 		return pRating;
 	}
@@ -207,19 +213,19 @@ public class VisitService {
 	public HashMap<Long,Integer> getMeanRatingGroup(Visit visit) {
 		HashMap<Long,Integer> meanRating = new HashMap<>();
 		Visitor v = visit.getVisitor();  //the visitor
-		HashMap<PresentationVisitor, Integer> vPresentation = getStatsRatingVisitor(v.getVisit());
+		HashMap<Long, Integer> vPresentation = getStatsRatingVisitor(v.getVisit());
 		List<Visitor> vMates = v.getGroup().getVisitors();
 		int cont = 0;
-		for(PresentationVisitor p: vPresentation.keySet()) {
+		for(Long id: vPresentation.keySet()) {
 			int temp = 0;
 			cont = 0;
 			for(Visitor visitor: vMates) {
-				if(getStatsRatingVisitor(visitor.getVisit()).containsKey(p)) {
-					temp =+ getStatsRatingVisitor(visitor.getVisit()).get(p);
+				if(getStatsRatingVisitor(visitor.getVisit()).containsKey(id)) {
+					temp =+ getStatsRatingVisitor(visitor.getVisit()).get(id);
 					cont =+ 1;
 				}
 			}
-			meanRating.put(p.getPresentation().getId(), (temp/cont));
+			meanRating.put(id, (temp/cont));
 		}
 		return meanRating;
 	}
