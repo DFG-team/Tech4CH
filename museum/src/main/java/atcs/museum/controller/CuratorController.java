@@ -17,7 +17,7 @@ import atcs.museum.services.VisitorService;
 
 @Controller
 public class CuratorController {
-	
+
 	@Autowired
 	private VisitService visitService;
 	@Autowired
@@ -32,30 +32,30 @@ public class CuratorController {
 	private PointOfInterestVisitorRepository poiRepository;
 	@Autowired
 	private PresentationVisitorRepository pRepository;
-	
-	
+
+
 	@RequestMapping("/")
 	public String home() {
-	return "index";
+		return "index";
 	}
-	
+
 	@RequestMapping("/userGuide")
 	public String userGuide() {
 		return "userGuide";
 	}
-    
+
 	@RequestMapping("/curatorPanel")
 	public String curatorPanel() {
-	return "curatorPanel";
+		return "curatorPanel";
 	}
 	//Html page about a visit summary for a selected visitor or group
 	//For example where they visited,how much time spent, what presentation they watch
 	@RequestMapping("/groupsList")
 	public String visitSummary(Model model) {
 		model.addAttribute("groups", this.groupRepository.findAll());
-		
+
 		return "groupsList";
-	
+
 	}
 	@RequestMapping("/groupsList/group{IdG}")
 	public String groupList(@PathVariable("IdG")Long idG, Model model) {
@@ -71,22 +71,22 @@ public class CuratorController {
 		model.addAttribute("presentations", this.visitorService.getPres(idV));
 		model.addAttribute("namePois", this.visitService.getNamePois());
 		model.addAttribute("namePres", this.visitService.getNamePres());
-		
+
 		//STATS
 		model.addAttribute("statsPoi", this.visitService.getStatsPoiVisitor(v.getVisit()));
 		model.addAttribute("statsP", this.visitService.getStatsPresentationVisitor(v.getVisit()));
 		model.addAttribute("statsRating", this.visitService.getStatsRatingVisitor(v.getVisit()));
 		model.addAttribute("statsInterruption", this.visitService.getStatsInterruptionPresentation(v.getVisit()));
-		
-	    //GROUP AVERAGE
+
+		//GROUP AVERAGE
 		model.addAttribute("meanPoi", this.visitService.getMeanTimePoiGroup(v.getVisit()));
 		model.addAttribute("meanPresentation", this.visitService.getMeanTimePresentationGroup(v.getVisit()));
 		model.addAttribute("meanRating", this.visitService.getMeanRatingGroup(v.getVisit()));
-		
+
 		return "visitSummary";
 	}
-	
-	
+
+
 	//Html page about statistic for all visit
 	@RequestMapping("/museumStatistic")
 	public String museumStatistic(Model model) {
@@ -96,6 +96,6 @@ public class CuratorController {
 		model.addAttribute("holdingPower", this.museumStatsService.holdingPowerStats());
 		model.addAttribute("namePois", this.visitService.getNamePois());
 		return "museumStatistic";
-	
+
 	}
 }

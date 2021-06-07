@@ -69,7 +69,7 @@ Licence URI: https://www.os-templates.com/template-terms
 					<li><a class="drop" th:href="@{/visitorPanel}">User</a>
 						<ul>
 							<li><a th:href="@{/visitorPanel}">Visit Playback</a></li>
-							<li><a href="@{/userGuide}">How To Use</a></li></li>
+							<li><a th:href="@{/userGuide}">How To Use</a></li></li>
 			</nav>
 			<!-- ################################################################################################ -->
 		</section>
@@ -87,7 +87,7 @@ Licence URI: https://www.os-templates.com/template-terms
 				<p>Scroll down to choose actions, or click the button and read
 					our user guide</p>
 				<footer>
-					<a class="btn" href="@{/userGuide}">How to use the site <i
+					<a class="btn" th:href="@{/userGuide}">How to use the site <i
 						class="fas fa-angle-right"></i></a>
 				</footer>
 			</article>
@@ -102,7 +102,7 @@ Licence URI: https://www.os-templates.com/template-terms
 			<!-- main body -->
 			<!-- ################################################################################################ -->
 			<div class="sectiontitle">
-				<h6 class="heading">Are you a visitor or a curator?</h6>
+				<h6 class="heading"><b>Are you a visitor or a curator?</b></h6>
 			</div>
 			<div class="group center btmspace-80">
 				<article class="one_third first">
@@ -116,7 +116,7 @@ Licence URI: https://www.os-templates.com/template-terms
 					<h6 class="heading">Curator</h6>
 				</article>
 				<article class="one_third">
-					<a class="ringcon btmspace-50" href="@{/userGuide}"><i
+					<a class="ringcon btmspace-50" th:href="@{/userGuide}"><i
 						class="fas fa-question"></i></a>
 					<h6 class="heading">How to use the site</h6>
 				</article>
