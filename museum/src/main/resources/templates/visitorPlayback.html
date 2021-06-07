@@ -27,7 +27,7 @@ Licence URI: https://www.os-templates.com/template-terms
 			<!-- ################################################################################################ -->
 			<div id="museum" class="one_quarter first">
 				<h1>
-					<img src= "../images/demo/logo.png" th:href="@{/}">
+					<img src="../images/demo/logo.png" th:href="@{/}">
 				</h1>
 			</div>
 			<div class="three_quarter">
@@ -92,7 +92,7 @@ Licence URI: https://www.os-templates.com/template-terms
 			<table>
 				<thead>
 					<tr>
-						<td><a class="fas fa-map-marker"></a>  POI name</td>
+						<td><a class="fas fa-map-marker"></a> POI name</td>
 					</tr>
 				</thead>
 				<tr th:each="playbackPoi:${playbackPois}">
@@ -101,11 +101,19 @@ Licence URI: https://www.os-templates.com/template-terms
 
 			</table>
 			<h1 class="black-text">You can speed up your visit in this way</h1>
-			<font face="Times New Roman" size="4" color="black"
-				th:text=" ' You go on same stage :' +' '+ ${double_touch} + 'times'">title</font>
-			<ul>
+			<table>
+				<thead>
+					<tr>
+						<td><a class="fas fa-map-marker"></a> POI name</td>
+						<td><a class="fas fa-hashtag"></a> of time you visited</td>
+					</tr>
+				</thead>
+				<tr th:each="line:${doubleTime}">
+					<td th:text="${namePois.get(line.key)}"></td>
+					<td th:text="${line.value}"></td>
+				</tr>
+			</table>
 
-			</ul>
 		</div>
 	</div>
 </body>

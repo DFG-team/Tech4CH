@@ -229,4 +229,20 @@ public class VisitService {
 		}
 		return meanRating;
 	}
+	
+	public HashMap<Long, Integer> getDoubleVisit(Visit visit){
+		HashMap<Long,Integer> doubleVisit = new HashMap<>();
+		List<PointOfInterestVisitor> pois = visit.getVisitPois();
+		for(PointOfInterestVisitor poiV: pois) {
+			if(doubleVisit.containsKey(poiV.getPoi().getId())) {
+				int temp = doubleVisit.get(poiV.getPoi().getId());
+				doubleVisit.put(poiV.getPoi().getId(), temp+1);
+			}
+			else {
+				doubleVisit.put(poiV.getPoi().getId(), 1);
+			}
+		}
+		return doubleVisit;
+		
+	}
 }
