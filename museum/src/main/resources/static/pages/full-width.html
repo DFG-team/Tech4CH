@@ -74,12 +74,10 @@ Licence URI: https://www.os-templates.com/template-terms
 		style="background-image: url('../images/demo/backgrounds/01.png');">
 		<div id="breadcrumb" class="hoc clear">
 			<!-- ################################################################################################ -->
-			<h6 class="heading">Visit Summaary</h6>
+			<h6 class="heading">Visitor Panel</h6>
 			<ul>
 				<li><a th:href="@{/}">Home</a></li>
-				<li><a th:href="@{/curatorPanel}">Curator Panel</a></li>
-				<li><a th:href="@{/groupsList}">Group List</a></li>
-				<li><a>Visit Summary</a></li>
+				<li><a th:href="@{/visitorPanel}">Visitor Panel</a></li>
 			</ul>
 			<!-- ################################################################################################ -->
 		</div>
@@ -87,69 +85,24 @@ Licence URI: https://www.os-templates.com/template-terms
 	<!-- ################################################################################################ -->
 	<!-- ################################################################################################ -->
 	<!-- ################################################################################################ -->
-	<div class="wrapper row3">
-		<main class="hoc container clear">
-			<!-- main body -->
-			<!-- ################################################################################################ -->
-			
-				<div class="container">
-			<div class="row text-center">
-					<h1 class="black-text">Point Of Interest Visited by the visitor</h1>
-				<ul>
+<div class="container">
+				<div class="row text-center">
+				<h1 class="black-text">Visitor playback</h1>
+				<h3 class="black-text">There you can see your visitor path</h3>
+			<ul>
+			<li th:each="playbackPoi:${playbackPois}"><font
+				face="Times New Roman" size="4" color="black"
+					 th:text=" ' Name Stage:' +' '+ ${playbackPoi.name}">titolo Piervy</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
 
-					<li th:each="poi:${pois}">
-						<font face="Times New Roman" size="4" color="black"><a
-							th:text="${poi.name}">A&nbsp&nbsp</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a
-							th:text="' || Start time' +  ' ' + ${poi.timeIn}">B&nbsp&nbsp</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a
-							th:text="' || End time' + ' ' + ${poi.timeOut}">POI&nbsp&nbsp </a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-					</li>
-
-				</ul>
+		</ul>
+		<h1 class="black-text">You can speed up your visit in this way</h1>
+		<font
+				face="Times New Roman" size="4" color="black"
+					 th:text=" ' You go on same stage :' +' '+ ${double_touch} + 'times'">title</font>
+		<ul>
+				
+		</ul>
+				</div>
 			</div>
-		</div>
-		<div class="container">
-			<div class="row text-center">
-				<h1 class="black-text">Presentation Played by the visitor</h1>
-				<ul>
-					<li th:each="p:${presentations}"><font face="Times New Roman"
-						size="4" color="black"><a
-							th:text="${p.name} +' || Start time: '+ ${p.timeOn} +' || Stop time:'+ ${p.timeOff}+' || Interrupted by the system: ' + ${p.interruption}+' || Rate: ' + ${p.rate}+' || in front of the group average: '+${meanRating.get(p.id)}">Presentation
-
-						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
-
-
-				</ul>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row text-center">
-				<h1 class="black-text">Point of interest time spent statistics</h1>
-				<ul>
-					<li th:each="poi_stats:${statsPoi}"><font
-						face="Times New Roman" size="4" color="black"><a
-							th:text="${namePois.get(poi_stats.key)} +' || Total time spent in the POI: '+ ${poi_stats.value} +' || '+ 'in front of the average of the groups:' + ' ' + ${meanPoi.get(poi_stats.key)}">Presentation
-
-						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-
-
-				</ul>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row text-center">
-				<h1 class="black-text">Presentation Time spent Statistics</h1>
-				<ul>
-					<li th:each="p_stats:${statsP}"><font face="Times New Roman"
-						size="4" color="black"><a
-							th:text="${namePres.get(p_stats.key)} +' ||Total time spent listening the presentation: '+ ${p_stats.value} +' || ' + 'in front of the average of the groups:' + ' ' + ${meanPresentation.get(p_stats.key)}">Presentation
-
-						</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</li>
-
-
-				</ul>
-			</div>
-		</div>
-		</main>
-	</div>
 </body>
 </html>

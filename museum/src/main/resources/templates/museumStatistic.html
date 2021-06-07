@@ -128,7 +128,7 @@ Licence URI: https://www.os-templates.com/template-terms
 					<ul>
 						<li th:each="stat:${attractionPower}"><font
 							face="Times New Roman" size="4" color="black"><a
-								th:text="'The poi named ' + ${namePois.get(stat.key)} + ' was visited by the: '+ ${stat.value} + '% of the visitors'">keyValue
+								th:text="'The POI ' + ${namePois.get(stat.key)} + ' was visited by the '+ ${stat.value} + '% of the visitors'">keyValue
 							</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
 
 
@@ -142,7 +142,7 @@ Licence URI: https://www.os-templates.com/template-terms
 					<ul>
 						<li th:each="stat:${holdingPower}"><font
 							face="Times New Roman" size="4" color="black"><a
-								th:text="'In front of the POI named ' + ${namePois.get(stat.key)} + ' visitors spent complessively: '+ ${stat.value} + ' time'">keyValue
+								th:text="'In front of the POI ' + ${namePois.get(stat.key)} + ' all the visitors spent complessively: '+ ${stat.value}">keyValue
 							</a></font>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
 
 

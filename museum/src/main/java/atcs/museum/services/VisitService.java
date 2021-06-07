@@ -214,12 +214,12 @@ public class VisitService {
 			int temp = 0;
 			cont = 0;
 			for(Visitor visitor: vMates) {
-				if(getStatsRatingVisitor(visitor.getVisit()).get(p) != null) {
+				if(getStatsRatingVisitor(visitor.getVisit()).containsKey(p)) {
 					temp =+ getStatsRatingVisitor(visitor.getVisit()).get(p);
 					cont =+ 1;
 				}
 			}
-			meanRating.put(p.getId(), (temp/cont));
+			meanRating.put(p.getPresentation().getId(), (temp/cont));
 		}
 		return meanRating;
 	}
