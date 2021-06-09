@@ -1,6 +1,8 @@
 package atcs.museum;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,6 +17,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import atcs.museum.domain.*;
@@ -53,11 +56,12 @@ public class DBPopulation  implements ApplicationRunner{
 	public void populateRoom() throws IOException, InterruptedException {
 
 
-		JSONParser parser = new JSONParser();
 		try {     
 
+            Reader reader1 = new InputStreamReader(new ClassPathResource("Data/room.json").getInputStream());
 
-			JSONArray roomIterator = (JSONArray) parser.parse(new FileReader("resource/Data/room.json"));
+    		JSONParser parser = new JSONParser();
+            JSONArray roomIterator = (JSONArray) parser.parse(reader1);
 
 
 			for (Object o : roomIterator) {
@@ -115,9 +119,10 @@ public class DBPopulation  implements ApplicationRunner{
 		JSONParser parser = new JSONParser();
 
 		try {     
+			
+			Reader reader2 = new InputStreamReader(new ClassPathResource("Data/T4CH_data.json").getInputStream());
 
-
-			JSONArray visitor = (JSONArray) parser.parse(new FileReader("resource/Data/T4CH_data.json"));
+			JSONArray visitor = (JSONArray) parser.parse(reader2);
 
 			Long temp_group_id = null;
 
