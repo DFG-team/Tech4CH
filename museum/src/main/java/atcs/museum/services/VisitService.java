@@ -32,6 +32,8 @@ public class VisitService {
 	@Autowired
 	private PresentationRepository pRepository;
 	@Autowired
+	private GroupRepository gRepository;
+	@Autowired
 	private PointOfInterestService poiService;
 	@Autowired
 	private PresentationService pService;
@@ -74,7 +76,8 @@ public class VisitService {
 	//**GROUP**//
 	//Play-back of group visit
 	@Transactional
-	public HashMap<Long, List<PointOfInterestVisitor>> getGroupVisitPath(GroupVisit group){
+	public HashMap<Long, List<PointOfInterestVisitor>> getGroupVisitPath(Long idG){
+		GroupVisit group = this.gRepository.findById(idG).get();
 		HashMap<Long, List<PointOfInterestVisitor>> visits = new HashMap<>();
 
 		for(Visitor v: group.getVisitors()) {
@@ -174,7 +177,7 @@ public class VisitService {
 			for(Visitor visitor: vMates) { //for every group mate of the visitor
 				if(getStatsPoiVisitor(visitor.getVisit()).containsKey(id)) {
 					temp =+ getStatsPoiVisitor(visitor.getVisit()).get(id).toNanoOfDay(); //sum the time spent in front of the poi
-					cont =+ 1;
+					cont++;
 				}
 			}
 			meanTimePoi.put(id, LocalTime.ofNanoOfDay(temp/cont)); //put in the map the mean time(temp/sizeof group) for this poi

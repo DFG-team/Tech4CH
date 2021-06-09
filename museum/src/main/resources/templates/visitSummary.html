@@ -124,6 +124,8 @@ Licence URI: https://www.os-templates.com/template-terms
 								<td><a class="fas fa-clock"></a>  Time On</td>
 								<td><a class="fas fa-clock"></a>  Time Off</td>
 								<td><a class="fas fa-ban"></a>  Interrupted by System</td>
+								<td><a class="fas fa-star"></a>  Rate</td>
+								
 							</tr>
 						</thead>
 						<tr th:each="p:${presentations}">
@@ -131,6 +133,7 @@ Licence URI: https://www.os-templates.com/template-terms
 							<td th:text="${p.timeOn}"></td>
 							<td th:text="${p.timeOff}"></td>
 							<td th:text="${p.interruption}"></td>
+							<td th:text="${p.rate}"></td>
 
 						</tr>
 					</table>
@@ -166,7 +169,7 @@ Licence URI: https://www.os-templates.com/template-terms
 								<td><a class="fas fa-music"></a>  Presentation name</td>
 								<td><a class="fas fa-clock"></a>  Total listening time</td>
 								<td><a class="fas fa-clock"></a>  Group Average listening time</td>
-								<td><a class="fas fa-star-half"></a>  Rate</td>
+								<td><a class="fas fa-star-half"></a>  Visitor Average Rate</td>
 								<td><a class="fas fa-star"></a>  Group Average Rate</td>
 							</tr>
 						</thead>

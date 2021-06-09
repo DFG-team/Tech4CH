@@ -60,6 +60,7 @@ public class CuratorController {
 	@RequestMapping("/groupsList/group{IdG}")
 	public String groupList(@PathVariable("IdG")Long idG, Model model) {
 		model.addAttribute("visitors", this.groupRepository.findById(idG).get().getVisitors());
+		model.addAttribute("visits", this.visitService.getGroupVisitPath(idG));
 		return "visitorsList";
 	}
 	@RequestMapping("/visitorsList/visitor{IdV}")

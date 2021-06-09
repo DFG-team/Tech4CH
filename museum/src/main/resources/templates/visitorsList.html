@@ -97,12 +97,13 @@ Licence URI: https://www.os-templates.com/template-terms
 			<table style="width: 100%">
 				<thead>
 					<tr>
-						<td><a class="fas fa-user"></a>  Member of Group ID</td>
+						<td><a class="fas fa-user"></a>  Member of Group ID (click on the ID button to see visitor statistics)</td>
+						<td><a class="fas fa-map"></a>  Visitor Path</td>
 					</tr>
 				</thead>
 				<tr th:each="visitor:${visitors}">
 					<td><a th:href="@{'/visitorsList' + '/' + 'visitor'+${visitor.id}}"><button th:text="${visitor.id}"></button></a></td>
-					<td	></td>
+					<td><ul><li th:each="v:${visits.get(visitor.id)}"><a th:text="${v.name}"></a></li></ul></td>
 				</tr>
 
 			</table>
